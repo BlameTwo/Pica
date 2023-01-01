@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7</TargetFramework>
+    <Nullable>enable</Nullable>
+	  <PublishAot>true</PublishAot>
+	  <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pica.Interfaces\Pica.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

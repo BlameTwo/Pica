@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7</TargetFramework>
+    <Nullable>enable</Nullable>
+	  <OutputType>Library</OutputType>
+	  <PublishAot>true</PublishAot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pica.Models.PicaJsonConverts\Pica.Models.PicaJsonConverts.csproj" />
+    <ProjectReference Include="..\Pica.Services\Pica.Services.csproj" />
+  </ItemGroup>
+
+</Project>
