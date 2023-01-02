@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+                    xmlns:border="http://schemas.microsoft.com/netfx/2009/xaml/presentation">
+    <border:CornerRadius x:Key="DefaultCornerRadius" TopLeft="5" TopRight="5" BottomLeft="5" BottomRight="5"/>
+</ResourceDictionary>

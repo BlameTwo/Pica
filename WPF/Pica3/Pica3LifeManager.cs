@@ -6,6 +6,7 @@ using Pica.Services;
 using Pica.Services.ApiProvider;
 using Pica3.Extend;
 using Pica3.UI.Extend;
+using Pica3.UI.Services;
 using Pica3.ViewModels;
 using Pica3.Views;
 using Pica3.Views.Dialogs;
@@ -86,6 +87,7 @@ public static class Pica3LifeManager
         hostBuilder.ConfigureServices((context, services) =>
         {
             services.AddSingleton<IPicaShowDialog,PicaShowDialog>();
+            services.AddSingleton<IPicaShowLitterMessage, PicaShowLitterMessage>();
         });
         return hostBuilder;
     }

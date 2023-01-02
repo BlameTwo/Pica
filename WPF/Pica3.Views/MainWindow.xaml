@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Pica3.ViewModels;assembly=Pica3.ViewModels"
         d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="grid">
         <Button Content="登录" Height="70" Click="Button_Click" Width="120"/>
     </Grid>
 </Window>
