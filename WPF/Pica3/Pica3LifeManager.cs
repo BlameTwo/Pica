@@ -86,8 +86,12 @@ public static class Pica3LifeManager
     {
         hostBuilder.ConfigureServices((context, services) =>
         {
+            //对话框服务
             services.AddSingleton<IPicaShowDialog,PicaShowDialog>();
+            //弹窗消息服务
             services.AddSingleton<IPicaShowLitterMessage, PicaShowLitterMessage>();
+            //Window窗体位置及其大小控制
+            services.AddSingleton<IWindowManager, WindowManager>();
         });
         return hostBuilder;
     }

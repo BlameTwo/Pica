@@ -13,7 +13,7 @@ namespace Pica3.Views.Dialogs
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void Close_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             this.Close();
         }

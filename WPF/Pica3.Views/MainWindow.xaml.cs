@@ -40,7 +40,7 @@ namespace Pica3.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PicaShowLitterMessage.Show("测试弹窗");
+            PicaShowDialog.Show(LoginDialogView);
         }
     }
 }

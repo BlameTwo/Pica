@@ -3,6 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <!--Controls-->
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Styles/Toast.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Styles/TextBox.xaml" />
         
         <!--Color-->
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Theme/DefaultTheme.xaml"/>
