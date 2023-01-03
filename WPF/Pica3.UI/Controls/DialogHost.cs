@@ -40,13 +40,11 @@ namespace Pica3.UI.Controls
                 if (layer != null && _container == null)
                 {
                     _container = new AdornerContainer(layer);
-                    UserControl us = new UserControl();
                     Border mask = new Border
                     {
                         Background = new SolidColorBrush(Color.FromArgb(0, 30, 30, 30)),
                         Opacity = 1,
                     };
-                    us.Content= mask;
                     if (Content is FrameworkElement contentControl)
                     {
                         if ((Content as FrameworkElement)!.Parent != null)
@@ -65,8 +63,8 @@ namespace Pica3.UI.Controls
 #endif
                         }
                         mask.Child = ((UIElement)Content);
-                        _container.Child = us;
-                        us.DataContext = VM;
+                        _container.Child = mask;
+                        mask.DataContext = VM;
                         layer.Add(_container);
                         
                         layer.Visibility = Visibility.Visible;

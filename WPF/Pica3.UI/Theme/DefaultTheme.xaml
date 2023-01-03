@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="ToastBackgroundColor" Color="#338FCC" />
-    <SolidColorBrush x:Key="ControlDefaultFill" Color="#6EBCF3" />
-    <SolidColorBrush x:Key="DialogHostBackgroundColor" Color="White" />
-    <SolidColorBrush x:Key="DialogHostBorderColor" Color="Black" />
-    <SolidColorBrush x:Key="AppBackground" Color="#FF4E5354" />
+    <SolidColorBrush x:Key="ToastBackgroundColor" Color="#FFD58CDC" />
+    <SolidColorBrush x:Key="ControlDefaultFill" Color="#FF8EE4" />
+    <SolidColorBrush x:Key="DialogHostBackgroundColor" Color="#FFEDDCDC" />
+    <SolidColorBrush x:Key="DialogHostBorderColor" Color="White" />
+    <SolidColorBrush x:Key="AppBackground" Color="White" />
     <SolidColorBrush
         x:Key="TextBackgroundColor"
         Opacity="0.5"
-        Color="Gray" />
+        Color="White" />
     <SolidColorBrush x:Key="WindowChromeExit" Color="Red" />
 </ResourceDictionary>

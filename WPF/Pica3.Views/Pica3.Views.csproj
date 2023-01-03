@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Bika_loading.gif" />
     <None Remove="Assets\LoginHeader.png" />
+    <None Remove="Assets\LoginHeader_2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,7 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Bika_loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\LoginHeader.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\LoginHeader_2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

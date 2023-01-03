@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pica3.Views.Interface;
-
 namespace Pica3.Views
 {
     public class MainService : IMainService

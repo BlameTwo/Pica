@@ -10,7 +10,7 @@
     Width="800"
     Height="450"
     Background="{DynamicResource AppBackground}"
-    Foreground="White"
+    Foreground="black"
     Style="{DynamicResource DefaultWindowStyle}"
     mc:Ignorable="d">
     <Window.Resources>

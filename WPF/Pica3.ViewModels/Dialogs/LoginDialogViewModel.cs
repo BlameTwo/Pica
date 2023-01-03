@@ -72,6 +72,7 @@ namespace Pica3.ViewModels
         [RelayCommand]
         async Task Loaded()
         {
+            Ips.Clear();
             var list = await Pica3Client.GetIpList();
             foreach (var ip in list.Ips) 
             { 
@@ -82,7 +83,10 @@ namespace Pica3.ViewModels
         [RelayCommand]
         void IpSelection()
         {
-            Pica3Client.SetIp(null, IpSelectItem);
+            if (!string.IsNullOrWhiteSpace(IpSelectItem))
+            {
+                Pica3Client.SetIp(null, IpSelectItem);
+            }
         }
     }
 }
