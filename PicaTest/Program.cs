@@ -26,6 +26,13 @@ namespace PicaTest
 #if DEBUG
             //Debug模式下使用自己账号
             var result = await loginProvider.LoginAsync("18833168856", "qwe262953");
+            #region 个人收藏漫画
+            //var myfav = await userProvider.GetUserFavourite(1);
+            //foreach (var item in myfav.Data.Comics.Docs)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+            #endregion
 #else
             while (true)
             {

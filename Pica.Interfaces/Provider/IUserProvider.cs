@@ -22,6 +22,8 @@ namespace Pica.Interfaces.Provider
         /// </summary>
         /// <returns></returns>
         Task<ResultCode<PauchData>> UserPauch();
+
+        Task<ResultCode<FavouriteData>> GetUserFavourite(int pagesize = 0);
     }
 
 }

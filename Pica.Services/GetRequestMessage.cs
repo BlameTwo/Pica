@@ -60,7 +60,6 @@ namespace Pica.Services
             request.Content = poststring;
             if (request.Content?.Headers.ContentType != null)
             {
-                // 惊呆了，小写不行，必须用大写
                 request.Content.Headers.ContentType.CharSet = "UTF-8";
             }
             request.Headers.Add("time", ApisProvider.TimeStamp);

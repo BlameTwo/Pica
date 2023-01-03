@@ -6,7 +6,7 @@
     xmlns:dh="clr-namespace:Pica3.UI.Controls;assembly=Pica3.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Pica3.ViewModels;assembly=Pica3.ViewModels"
-    Title="MainWindow"
+    Title="哔咔"
     Width="800"
     Height="450"
     Background="{DynamicResource AppBackground}"

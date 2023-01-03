@@ -24,14 +24,19 @@ namespace Pica.Services.ApiProvider
         public IGetRequestMessage GetRequestMessage { get; }
         public IPica3Client Pica3Client { get; }
 
+        public async Task<ResultCode<FavouriteData>> GetUserFavourite(int pagesize = 1)
+        {
+            var request = GetRequestMessage.GetRequestMessageAsync(HttpMethod.Get
+                , uri: $"users/favourite?page={pagesize}&s=ua", null, true, null
+                );
+            var result = await Pica3Client._httpclient.SendAsync(request);
+            return Pica.Models.PicaJsonConverts.ReadJson.Read<ResultCode<FavouriteData>>( await result.Content.ReadAsStreamAsync().ConfigureAwait(false));
+        }
+
         public async Task<ResultCode<UserProfileData>> GetUserProfile(string id="")
         {
             string url = "";
             if (string.IsNullOrWhiteSpace(id))
-            {
-                url = "users/profile";
-            }
-            else
             {
                 url = $"users/{id}/profile";
             }
