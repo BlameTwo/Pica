@@ -2,6 +2,7 @@
 using Pica3.UI.Extend;
 using Pica3.ViewModels;
 using Pica3.Views.Dialogs;
+using Pica3.Views.Interface;
 using System;
 using System.Windows;
 
@@ -13,17 +14,14 @@ namespace Pica3.Views
     public partial class MainWindow : Window
     {
         public MainWindow(
-            MainWindowViewModel viewmodel, 
             IPicaShowDialog picaShowDialog, 
-            LoginDialogView loginDialogView,
-            IPicaShowLitterMessage picaShowLitterMessage)
+            IPicaShowLitterMessage picaShowLitterMessage,
+            IMainService mainService)
         {
             InitializeComponent();
-            Viewmodel = viewmodel;
             PicaShowDialog = picaShowDialog;
-            LoginDialogView = loginDialogView;
             PicaShowLitterMessage = picaShowLitterMessage;
-            this.DataContext = viewmodel;
+            MainService = mainService;
             Loaded += MainWindow_Loaded;
         }
 
@@ -35,12 +33,15 @@ namespace Pica3.Views
 
         public MainWindowViewModel Viewmodel { get; }
         public IPicaShowDialog PicaShowDialog { get; }
-        public LoginDialogView LoginDialogView { get; }
         public IPicaShowLitterMessage PicaShowLitterMessage { get; }
+        public IMainService MainService { get; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PicaShowDialog.Show(LoginDialogView);
+            //这里初始化使用的是Views中的服务管理
+            var LoginDialogView = MainService.GetService<LoginDialogView>();
+            var vm = MainService.GetService<LoginDialogViewModel>();
+            PicaShowDialog.Show(LoginDialogView,vm);
         }
     }
 }

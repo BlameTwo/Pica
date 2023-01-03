@@ -18,12 +18,10 @@ namespace Pica3.UI.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DialogHost), new FrameworkPropertyMetadata(typeof(DialogHost)));
         }
 
-
-
         private AdornerContainer _container;
 
 
-        public void Show()
+        public void Show(Object VM)
         {
             if(ShowingEvent != null)
             {
@@ -40,12 +38,13 @@ namespace Pica3.UI.Controls
                 if (layer != null && _container == null)
                 {
                     _container = new AdornerContainer(layer);
+                    UserControl us = new UserControl();
                     Border mask = new Border
                     {
                         Background = new SolidColorBrush(Color.FromArgb(0, 30, 30, 30)),
                         Opacity = 1,
                     };
-
+                    us.Content= mask;
                     if (Content is FrameworkElement contentControl)
                     {
                         if ((Content as FrameworkElement)!.Parent != null)
@@ -64,22 +63,24 @@ namespace Pica3.UI.Controls
 #endif
                         }
                         mask.Child = ((UIElement)Content);
-                        _container.Child = mask;
+                        _container.Child = us;
+                        us.DataContext = VM;
                         layer.Add(_container);
+                        
                         layer.Visibility = Visibility.Visible;
                         SetOpenAnimation();
                         this.RaiseEvent(new RoutedEventArgs(DialogHost.LoadedEvent));
                     }
                     else if (Content is string str)
                     {
-                        mask.Child = (UIElement)new TextBlock() { Text = str, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
-                        _container.Child = mask;
-                        layer.Add(_container);
-                        layer.Visibility = Visibility.Visible;
-                        if (ShowedEvent != null)
-                        {
-                            ShowedEvent.Invoke();
-                        }
+                        //mask.Child = (UIElement)new TextBlock() { Text = str, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+                        //_container.Child = mask;
+                        //layer.Add(_container);
+                        //layer.Visibility = Visibility.Visible;
+                        //if (ShowedEvent != null)
+                        //{
+                        //    ShowedEvent.Invoke();
+                        //}
                     }
 
                 }

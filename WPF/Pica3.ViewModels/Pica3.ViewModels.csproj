@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Pica.Interfaces\Pica.Interfaces.csproj" />
     <ProjectReference Include="..\Pica3.UI\Pica3.UI.csproj" />
   </ItemGroup>
 

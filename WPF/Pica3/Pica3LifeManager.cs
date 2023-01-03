@@ -29,7 +29,6 @@ public static class Pica3LifeManager
 
             //API内容控制器为单服务
             services.AddSingleton<IApisProvider, ApisProvider>();
-
             services.AddTransient<IInitProvider, InitProvider>();
             services.AddTransient<ILoginProvider, LoginProvider>();
             services.AddTransient<IUserProvider, UserProvider>();
@@ -92,6 +91,8 @@ public static class Pica3LifeManager
             services.AddSingleton<IPicaShowLitterMessage, PicaShowLitterMessage>();
             //Window窗体位置及其大小控制
             services.AddSingleton<IWindowManager, WindowManager>();
+
+            services.AddSingleton<Pica3.Views.Interface.IMainService, MainService>();
         });
         return hostBuilder;
     }

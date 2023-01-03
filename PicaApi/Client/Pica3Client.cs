@@ -109,6 +109,7 @@ namespace PicaApi.Services.Client
                     Proxy = proxy,
                     ServerCertificateCustomValidationCallback = (_, _, _, _) => true
                 });
+                _httpclient.BaseAddress = new Uri(BaseUrl);
                 _httpclient.Timeout = TimeSpan.FromSeconds(10);
             }
         }

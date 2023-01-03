@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Pica.Interfaces;
 using Pica3.Views;
 using Pica3Progress;
 using System;
@@ -41,6 +42,10 @@ namespace Pica3
         protected override void OnStartup(StartupEventArgs e)
         {
             Pica3.Views.MainWindow main = App.GetService<MainWindow>();
+            var viewmainservice = App.GetService<Views.Interface.IMainService>();
+            var Pica3Client = App.GetService<IPica3Client>();
+            Pica3Client.InitClient();
+            viewmainservice.Host = this.Host;
             this.MainWindow = main;
             main.Show();
             base.OnStartup(e);

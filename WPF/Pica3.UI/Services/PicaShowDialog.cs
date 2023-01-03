@@ -25,12 +25,12 @@ namespace Pica3.Extend
 
         
 
-        bool IPicaShowDialog.Show<T>(T arg)
+        bool IPicaShowDialog.Show<T>(T arg,object VM)
         {
             if (IsShow)
             {
                 //显示出对话框
-                arg.Show();
+                arg.Show(VM);
                 return true;
             }
             else
