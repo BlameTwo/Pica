@@ -8,4 +8,5 @@
         x:Key="TextBackgroundColor"
         Opacity="0.5"
         Color="Gray" />
+    <SolidColorBrush x:Key="WindowChromeExit" Color="Red" />
 </ResourceDictionary>

@@ -5,6 +5,10 @@
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Styles/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Styles/DialogHost.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Styles/Buttons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Styles/WindowBaseStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Styles/WindowBaseStyle.xaml" />
+
+
         <!--  Color  -->
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Theme/DefaultTheme.xaml" />
     </ResourceDictionary.MergedDictionaries>

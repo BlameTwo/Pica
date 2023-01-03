@@ -1,15 +1,17 @@
-﻿<Window
+﻿<dh:WindowBase
     x:Class="Pica3.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dh="clr-namespace:Pica3.UI.Controls;assembly=Pica3.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Pica3.ViewModels;assembly=Pica3.ViewModels"
     Title="MainWindow"
     Width="800"
     Height="450"
-    d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     Background="{DynamicResource AppBackground}"
+    Foreground="White"
+    Style="{DynamicResource DefaultWindowStyle}"
     mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Theme/DefaultTheme.xaml" />
@@ -21,4 +23,4 @@
             Click="Button_Click"
             Content="登录" />
     </Grid>
-</Window>
+</dh:WindowBase>
