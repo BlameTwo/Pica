@@ -7,7 +7,7 @@ namespace Pica3.UI.Services
         /// <summary>
         /// 显示方法
         /// </summary>
-        public void Show(object VM);
+        public void Show();
 
         public delegate void Showing();
         public delegate void Showed();

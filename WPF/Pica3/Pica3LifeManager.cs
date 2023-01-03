@@ -14,6 +14,10 @@ using PicaApi.Services.ApiProvider;
 using PicaApi.Services.Client;
 
 namespace Pica3Progress;
+
+/// <summary>
+/// Pica3的生命周期管理器
+/// </summary>
 public static class Pica3LifeManager
 {
     /// <summary>
@@ -32,6 +36,7 @@ public static class Pica3LifeManager
             services.AddTransient<IInitProvider, InitProvider>();
             services.AddTransient<ILoginProvider, LoginProvider>();
             services.AddTransient<IUserProvider, UserProvider>();
+            
             #endregion
 
             #region 注册请求方法
@@ -92,7 +97,8 @@ public static class Pica3LifeManager
             //Window窗体位置及其大小控制
             services.AddSingleton<IWindowManager, WindowManager>();
 
-            services.AddSingleton<Pica3.Views.Interface.IMainService, MainService>();
+            // 不用了，本来是为了方便拿对象注册的。
+            //services.AddSingleton<Pica3.Views.Interface.IMainService, MainService>();
         });
         return hostBuilder;
     }

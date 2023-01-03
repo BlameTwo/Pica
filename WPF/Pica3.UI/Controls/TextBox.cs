@@ -11,11 +11,6 @@ namespace Pica3.UI.Controls
 
         }
 
-        public TextBox()
-        {
-
-        }
-
 
 
         public CornerRadius CornerRadius

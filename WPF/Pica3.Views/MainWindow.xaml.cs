@@ -13,35 +13,41 @@ namespace Pica3.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// MainWindow构造函数
+        /// </summary>
+        /// <param name="picaShowDialog">对话框服务</param>
+        /// <param name="loginDialogView">登录对话框的一个服务</param>
+        /// <param name="mainWindowViewModel">Main窗口的VM</param>
         public MainWindow(
-            IPicaShowDialog picaShowDialog, 
-            IPicaShowLitterMessage picaShowLitterMessage,
-            IMainService mainService)
+            IPicaShowDialog picaShowDialog,
+            LoginDialogView loginDialogView,
+            MainWindowViewModel mainWindowViewModel)
         {
+            this.DataContext = mainWindowViewModel;
+            Viewmodel= mainWindowViewModel;
             InitializeComponent();
             PicaShowDialog = picaShowDialog;
-            PicaShowLitterMessage = picaShowLitterMessage;
-            MainService = mainService;
+            LoginDialogView = loginDialogView;
             Loaded += MainWindow_Loaded;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            PicaShowLitterMessage.ShowTime = TimeSpan.FromSeconds(2);
-            PicaShowLitterMessage.ShowOwner = grid;
+            Viewmodel.PicaShowLitterMessage.ShowTime = TimeSpan.FromSeconds(2);
+            Viewmodel.PicaShowLitterMessage.ShowOwner = grid;
         }
 
         public MainWindowViewModel Viewmodel { get; }
         public IPicaShowDialog PicaShowDialog { get; }
-        public IPicaShowLitterMessage PicaShowLitterMessage { get; }
+        public LoginDialogView LoginDialogView { get; }
         public IMainService MainService { get; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //这里初始化使用的是Views中的服务管理
-            var LoginDialogView = MainService.GetService<LoginDialogView>();
-            var vm = MainService.GetService<LoginDialogViewModel>();
-            PicaShowDialog.Show(LoginDialogView,vm);
+            ////这里初始化使用的是Views中的服务管理(弃用
+            //var LoginDialogView = MainService.GetService<LoginDialogView>();
+            PicaShowDialog.Show(LoginDialogView);
         }
     }
 }

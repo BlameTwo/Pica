@@ -12,7 +12,7 @@ namespace Pica3.UI.Controls
 {
     public class DialogHost: Control,IDialogHost
     {
-        //本文档来自于这里：https://github.com/BlameTwo/ZUDesignControl.git
+        //本文档来自于这里：https://github.com/BlameTwo/ZUDesignControl.git，经过一定的修改
         static DialogHost()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DialogHost), new FrameworkPropertyMetadata(typeof(DialogHost)));
@@ -21,12 +21,14 @@ namespace Pica3.UI.Controls
         private AdornerContainer _container;
 
 
-        public void Show(Object VM)
+        public void Show()
         {
             if(ShowingEvent != null)
             {
                 ShowingEvent.Invoke();
             }
+            //在此处保存一个数据上下文
+            object VM = this.DataContext;
             FrameworkElement element;
             AdornerDecorator decorator;
             element = WindowHelper.GetActiveWindow();
@@ -73,6 +75,7 @@ namespace Pica3.UI.Controls
                     }
                     else if (Content is string str)
                     {
+                        //直接干掉字符串消息框
                         //mask.Child = (UIElement)new TextBlock() { Text = str, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
                         //_container.Child = mask;
                         //layer.Add(_container);
@@ -149,17 +152,14 @@ namespace Pica3.UI.Controls
                 From = ScaleFrom,                                   //起始值
                 To = ScaleTo,                                     //结束值
                 Duration = new Duration(new TimeSpan(0, 0, 0, 0, 350)),
-                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut },
-                FillBehavior = FillBehavior.Stop
+                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
             };
             DoubleAnimation scaleAnimationy = new DoubleAnimation()
             {
                 From = ScaleFrom,                                   //起始值
                 To = ScaleTo,                                     //结束值
                 Duration = new Duration(new TimeSpan(0, 0, 0, 0, 350)),
-                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut },
-
-                FillBehavior = FillBehavior.Stop
+                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
             };
 
 

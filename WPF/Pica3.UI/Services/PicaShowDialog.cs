@@ -13,6 +13,7 @@ namespace Pica3.Extend
         {
             get
             {
+                //这里去判断一下是否有弹窗正在运行
                 FrameworkElement element;
                 AdornerDecorator decorator;
                 element = WindowHelper.GetActiveWindow();
@@ -23,14 +24,12 @@ namespace Pica3.Extend
             }
         }
 
-        
-
-        bool IPicaShowDialog.Show<T>(T arg,object VM)
+        public bool Show<T>(T arg) where T : IDialogHost
         {
             if (IsShow)
             {
                 //显示出对话框
-                arg.Show(VM);
+                arg.Show();
                 return true;
             }
             else

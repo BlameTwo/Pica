@@ -7,11 +7,21 @@ namespace Pica3.UI.Tools
 {
     public static class WindowHelper
     {
+        /// <summary>
+        /// 获得主窗口
+        /// </summary>
+        /// <returns></returns>
         public static Window GetActiveWindow()
         {
             return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)!;
         }
 
+        /// <summary>
+        /// 获得一个元素
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="d"></param>
+        /// <returns></returns>
         public static T GetChild<T>(DependencyObject d) where T : DependencyObject
         {
             if (d == null) return default;
@@ -28,6 +38,14 @@ namespace Pica3.UI.Tools
             return default;
         }
 
+
+        /// <summary>
+        /// 获得一个元素，通过Name
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="d"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static T GetElment<T>(DependencyObject d, string name) where T : DependencyObject
         {
             if (d == null) return default;

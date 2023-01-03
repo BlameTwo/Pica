@@ -9,6 +9,9 @@ namespace Pica3.UI.Services
 {
     public class WindowManager : IWindowManager
     {
+        /// <summary>
+        /// 私有操作变量
+        /// </summary>
         private Window _window;
         public Window MainWindow
         {
