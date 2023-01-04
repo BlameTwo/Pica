@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using Pica.Models.ApiModels.Users;
+using Pica.Models.ApiModels;
+using System.Threading.Tasks;
 
 namespace Pica.Interfaces.Provider
 {
@@ -10,14 +12,14 @@ namespace Pica.Interfaces.Provider
         /// <param name="keyword"></param>
         /// <param name="pagesize"></param>
         /// <returns></returns>
-        Task<string> SearchComic(string keyword,int pagesize = 1);
+        Task<ResultCode<SearchComicData>> SearchComic(string keyword,int pagesize = 1);
 
         /// <summary>
         /// 获取本子详情页面
         /// </summary>
         /// <param name="bookid"></param>
         /// <returns></returns>
-        Task<string> GetComicDetail(string bookid);
+        Task<ResultCode<ComicDetailData>> GetComicDetail(string bookid);
 
         /// <summary>
         /// 获取本子分卷

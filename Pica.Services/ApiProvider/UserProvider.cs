@@ -19,7 +19,7 @@ namespace Pica.Services.ApiProvider
         public IGetRequestMessage GetRequestMessage { get; }
         public IPica3Client Pica3Client { get; }
 
-        public async Task<ResultCode<FavouriteData>> GetUserFavourite(Sort sort,int pagesize = 1)
+        public async Task<ResultCode<FavouriteData>> GetUserFavourite(Sort sort = Sort.ua,int pagesize = 1)
         {
             var request = GetRequestMessage.GetRequestMessageAsync(HttpMethod.Get
                 , uri: $"users/favourite?page={pagesize}&s={sort}", null, true, null

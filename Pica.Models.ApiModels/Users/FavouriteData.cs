@@ -17,7 +17,7 @@ namespace Pica.Models.ApiModels.Users
         [JsonPropertyName("pages")]public int Pages { get; set; }
         [JsonPropertyName("total")]public int Total { get; set; }
 
-        [JsonPropertyName("docs")]public List<Favourite_Comics_Docs> Docs { get; set; }
+        [JsonPropertyName("docs")]public List<Comics_Docs> Docs { get; set; }
 
         /// <summary>
         /// 当前页数
@@ -30,7 +30,7 @@ namespace Pica.Models.ApiModels.Users
         [JsonPropertyName("limit")]public int Limit { get; set; }
     }
 
-    public class Favourite_Comics_Docs
+    public class Comics_Docs
     {
         [JsonPropertyName("id")]public string ID { get; set; }
         [JsonPropertyName("title")]public string Title { get; set; }
@@ -46,7 +46,7 @@ namespace Pica.Models.ApiModels.Users
 
         [JsonPropertyName("likesCount")]public int LiekCount { get; set; }
 
-        [JsonPropertyName("categories")]public List<string> Tags { get; set; }
+        [JsonPropertyName("categories")]public List<string> Categories { get; set; }
 
         [JsonPropertyName("thumb")]public Favourite_Thumb Thumb { get; set; }
     }

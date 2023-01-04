@@ -76,7 +76,7 @@ namespace PicaTest
 #endif
 
             #region 获取个人信息
-            //var userdata = await userProvider.GetUserProfile();
+            var userdata = await userProvider.GetUserProfile();
             #endregion
             #region 哔咔签到
             //var punch = await userProvider.UserPauch().ConfigureAwait(false);
@@ -86,7 +86,7 @@ namespace PicaTest
 
 
             #region 个人收藏漫画
-            //var myfav = await userProvider.GetUserFavourite(1);
+            var myfav = await userProvider.GetUserFavourite();
             //foreach (var item in myfav.Data.Comics.Docs)
             //{
             //    Console.WriteLine(item.Title);
@@ -94,20 +94,18 @@ namespace PicaTest
             #endregion
 
             #region 搜索漫画
-            //var searchdata =  await comicProvider.SearchComic("genshin", 1);
+            //var searchdata = await comicProvider.SearchComic("genshin", 1);
             //Console.WriteLine(searchdata);
-
-
             #endregion
 
             #region 获取漫画详情
-            //var comicdetail = await comicProvider.GetComicDetail("63adb53484e1f369d2bda06e");
-            //Console.WriteLine(comicdetail);
+            var comicdetail = await comicProvider.GetComicDetail("63adb53484e1f369d2bda06e");
+            Console.WriteLine(comicdetail);
             #endregion
 
             #region 获取漫画章节信息
-            var comicpages = await comicProvider.GetComicEpisode("63adb53484e1f369d2bda06e", 1);
-            Console.WriteLine(comicpages);
+            //var comicpages = await comicProvider.GetComicEpisode("63adb53484e1f369d2bda06e", 1);
+            //Console.WriteLine(comicpages);
             #endregion
             Console.ReadLine();
         }

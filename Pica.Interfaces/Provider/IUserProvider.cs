@@ -30,7 +30,7 @@ namespace Pica.Interfaces.Provider
         /// <param name="sort">排序规则</param>
         /// <param name="pagesize">页数，>1</param>
         /// <returns></returns>
-        Task<ResultCode<FavouriteData>> GetUserFavourite(Sort sort, int pagesize = 1);
+        Task<ResultCode<FavouriteData>> GetUserFavourite(Sort sort = Sort.ua, int pagesize = 1);
     }
 
 }

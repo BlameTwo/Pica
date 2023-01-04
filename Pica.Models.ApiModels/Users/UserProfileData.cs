@@ -1,38 +1,17 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Pica.Models.ApiModels.Users
 {
 
     public class UserProfileData
     {
-        public UserProfileData(UserProfileData_User data)
-        {
-            Data = data;
-        }
 
         [JsonPropertyName("user")]public UserProfileData_User Data { get; set; }
     }
 
     public class UserProfileData_User
     {
-
-        public UserProfileData_User(string iD, string name, string email, string gender, string birthday, string subName, bool verified, int exp, int level, object characters, string createdTime, bool isPunched, string imageBorder, UserProfile_Avatar avatar)
-        {
-            ID = iD;
-            Name = name;
-            Email = email;
-            Gender = gender;
-            Birthday = birthday;
-            SubName = subName;
-            Verified = verified;
-            Exp = exp;
-            Level = level;
-            Characters = characters;
-            CreatedTime = createdTime;
-            IsPunched = isPunched;
-            ImageBorder = imageBorder;
-            Avatar = avatar;
-        }
 
         [JsonPropertyName("_id")]public string ID { get; set; }
 
@@ -54,7 +33,7 @@ namespace Pica.Models.ApiModels.Users
 
         [JsonPropertyName("level")]public int Level { get; set; }
 
-        [JsonPropertyName("characters")]public object Characters { get; set; }
+        [JsonPropertyName("characters")]public List<string> Characters { get; set; }
 
         [JsonPropertyName("created_at")]public string CreatedTime { get; set; }
 
@@ -72,13 +51,6 @@ namespace Pica.Models.ApiModels.Users
     {
         [JsonPropertyName("originalName")] public string OriginalName { get; set; }
 
-
-        public UserProfile_Avatar(string originalName, string uriPath, string fileServer)
-        {
-            OriginalName = originalName;
-            UriPath = uriPath;
-            FileServer = fileServer;
-        }
 
         /// <summary>
         /// 不包含前缀的文件路径
