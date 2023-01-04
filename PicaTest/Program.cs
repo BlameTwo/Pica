@@ -13,9 +13,10 @@ namespace PicaTest
         {
             //初始化客户端，此初始化方式为变量
             IPica3Client pica3Client = AppCreate.GetService<IPica3Client>();
+            pica3Client.InitClient();
             ILoginProvider loginProvider = AppCreate.GetService<ILoginProvider>();
             IUserProvider userProvider = AppCreate.GetService<IUserProvider>();
-            pica3Client.InitClient();
+            IComicProvider comicProvider = AppCreate.GetService<IComicProvider>();
 
             //获得分流IP
             var str = await pica3Client.GetIpList();
@@ -25,14 +26,18 @@ namespace PicaTest
 
 #if DEBUG
             //Debug模式下使用自己账号
-            var result = await loginProvider.LoginAsync("18833168856", "qwe262953");
-            #region 个人收藏漫画
-            //var myfav = await userProvider.GetUserFavourite(1);
-            //foreach (var item in myfav.Data.Comics.Docs)
-            //{
-            //    Console.WriteLine(item.Title);
-            //}
-            #endregion
+            var result = await loginProvider.LoginAsync("18833168856", "qwe262953")
+                .ConfigureAwait(false);
+
+            if (result)
+                Console.WriteLine("登陆成功");
+            else
+            {
+                //直接退出程序
+                Console.WriteLine("登录失败！请重新打开程序重新登陆！");
+                System.Environment.Exit(0);
+            }
+
 #else
             while (true)
             {
@@ -74,10 +79,36 @@ namespace PicaTest
             //var userdata = await userProvider.GetUserProfile();
             #endregion
             #region 哔咔签到
-            var punch = await userProvider.UserPauch().ConfigureAwait(false);
-            Console.WriteLine(punch.Data.Resource.Status);
+            //var punch = await userProvider.UserPauch().ConfigureAwait(false);
+            //Console.WriteLine(punch.Data.Resource.Status);
             #endregion
 
+
+
+            #region 个人收藏漫画
+            //var myfav = await userProvider.GetUserFavourite(1);
+            //foreach (var item in myfav.Data.Comics.Docs)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+            #endregion
+
+            #region 搜索漫画
+            //var searchdata =  await comicProvider.SearchComic("genshin", 1);
+            //Console.WriteLine(searchdata);
+
+
+            #endregion
+
+            #region 获取漫画详情
+            //var comicdetail = await comicProvider.GetComicDetail("63adb53484e1f369d2bda06e");
+            //Console.WriteLine(comicdetail);
+            #endregion
+
+            #region 获取漫画章节信息
+            var comicpages = await comicProvider.GetComicEpisode("63adb53484e1f369d2bda06e", 1);
+            Console.WriteLine(comicpages);
+            #endregion
             Console.ReadLine();
         }
 

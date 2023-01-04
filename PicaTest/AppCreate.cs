@@ -38,6 +38,7 @@ namespace PicaTest
                     services.AddTransient<IInitProvider, InitProvider>();
                     services.AddTransient<ILoginProvider, LoginProvider>();
                     services.AddTransient<IUserProvider, UserProvider>();
+                    services.AddTransient<IComicProvider, ComicProvider>();
                     #endregion
 
                     #region 注册请求方法

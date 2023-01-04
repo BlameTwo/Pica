@@ -23,7 +23,14 @@ namespace Pica.Interfaces.Provider
         /// <returns></returns>
         Task<ResultCode<PauchData>> UserPauch();
 
-        Task<ResultCode<FavouriteData>> GetUserFavourite(int pagesize = 0);
+
+        /// <summary>
+        /// 获得个人收藏
+        /// </summary>
+        /// <param name="sort">排序规则</param>
+        /// <param name="pagesize">页数，>1</param>
+        /// <returns></returns>
+        Task<ResultCode<FavouriteData>> GetUserFavourite(Sort sort, int pagesize = 1);
     }
 
 }
