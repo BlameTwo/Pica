@@ -9,25 +9,32 @@ namespace Pica.Models.ApiModels.Users
         public Favourite_Comics Comics { get; set; }
     }
 
-    public class Favourite_Comics
+    public class PagesClass
     {
+
         /// <summary>
         /// 总页数
         /// </summary>
-        [JsonPropertyName("pages")]public int Pages { get; set; }
-        [JsonPropertyName("total")]public int Total { get; set; }
+        [JsonPropertyName("pages")] public int Pages { get; set; }
+        [JsonPropertyName("total")] public int Total { get; set; }
 
-        [JsonPropertyName("docs")]public List<Comics_Docs> Docs { get; set; }
 
         /// <summary>
         /// 当前页数
         /// </summary>
-        [JsonPropertyName("page")]public int Page { get; set; }
+        [JsonPropertyName("page")] public int Page { get; set; }
 
         /// <summary>
         /// 当前页总计
         /// </summary>
-        [JsonPropertyName("limit")]public int Limit { get; set; }
+        [JsonPropertyName("limit")] public int Limit { get; set; }
+    }
+
+    public class Favourite_Comics: PagesClass
+    {
+
+        [JsonPropertyName("docs")]public List<Comics_Docs> Docs { get; set; }
+
     }
 
     public class Comics_Docs

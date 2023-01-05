@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Pica.Models.ApiModels.Users;
 
-namespace Pica.Models.ApiModels.Users
+namespace Pica.Models.ApiModels.Comics
 {
     public class SearchComicData
     {
@@ -11,16 +12,16 @@ namespace Pica.Models.ApiModels.Users
     public class SearchComic_Comics
     {
         [JsonPropertyName("total")] public int Total { get; set; }
-        [JsonPropertyName("limit")]public int Limit { get; set; }
+        [JsonPropertyName("limit")] public int Limit { get; set; }
 
         /// <summary>
         /// 当前页数
         /// </summary>
-        [JsonPropertyName("page")]public int Page { get; set; }
+        [JsonPropertyName("page")] public int Page { get; set; }
         /// <summary>
         /// 最大页数
         /// </summary>
-        [JsonPropertyName("pages")]public int Pages { get; set; }
+        [JsonPropertyName("pages")] public int Pages { get; set; }
 
         [JsonPropertyName("docs")] public List<Comics_Docs> Docs { get; set; }
     }

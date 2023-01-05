@@ -1,10 +1,10 @@
 ﻿using Pica.Interfaces;
 using Pica.Interfaces.Provider;
-using Pica.Models.ApiModels.Users;
 using Pica.Models.ApiModels;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
+using Pica.Models.ApiModels.Comics;
 
 namespace Pica.Services.ApiProvider
 {
@@ -28,13 +28,14 @@ namespace Pica.Services.ApiProvider
             return Models.PicaJsonConverts.ReadJson.Read<ResultCode<ComicDetailData>>(stream);
         }
 
-        public async Task<string> GetComicEpisode(string bookid, int pagesize = 1)
+        public async Task<ResultCode<ComicEpisodeData>> GetComicEpisode(string bookid, int pagesize = 1)
         {
             string url = $"comics/{bookid}/eps?page={pagesize}";
             var quest = GetRequestMessage.GetRequestMessageAsync(HttpMethod.Get, url, null, true);
             var resultstream = await Pica3Client._httpclient.SendAsync(quest).ConfigureAwait(false);
             string json = await resultstream.Content.ReadAsStringAsync().ConfigureAwait(false);
-            return json;
+            Stream stream = await resultstream.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            return Models.PicaJsonConverts.ReadJson.Read<ResultCode<ComicEpisodeData>>(stream);
         }
 
         public Task<string> GetComicPages(string bookid, int Episodeid, int page)

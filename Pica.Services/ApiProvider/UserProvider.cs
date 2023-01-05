@@ -30,8 +30,8 @@ namespace Pica.Services.ApiProvider
 
         public async Task<ResultCode<UserProfileData>> GetUserProfile(string id="")
         {
-            string url = "";
-            if (string.IsNullOrWhiteSpace(id))
+            string url = $"users/profile";
+            if (!string.IsNullOrWhiteSpace(id))
             {
                 url = $"users/{id}/profile";
             }
@@ -41,6 +41,7 @@ namespace Pica.Services.ApiProvider
                 null,
                 true);
             var result = await Pica3Client._httpclient.SendAsync(request).ConfigureAwait(false);
+            var str = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
             Stream stream = await result.Content.ReadAsStreamAsync();
             return Pica.Models.PicaJsonConverts.ReadJson.Read<ResultCode<UserProfileData>>(stream);
         }

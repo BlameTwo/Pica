@@ -1,6 +1,6 @@
-﻿using Pica.Models.ApiModels.Users;
-using Pica.Models.ApiModels;
+﻿using Pica.Models.ApiModels;
 using System.Threading.Tasks;
+using Pica.Models.ApiModels.Comics;
 
 namespace Pica.Interfaces.Provider
 {
@@ -27,7 +27,7 @@ namespace Pica.Interfaces.Provider
         /// <param name="bookid">id</param>
         /// <param name="pagesize">本子详情数据中的PagesCount</param>
         /// <returns></returns>
-        Task<string> GetComicEpisode(string bookid,int pagesize = 1);
+        Task<ResultCode<ComicEpisodeData>> GetComicEpisode(string bookid,int pagesize = 1);
 
 
         /// <summary>

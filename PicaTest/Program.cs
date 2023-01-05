@@ -99,8 +99,8 @@ namespace PicaTest
             #endregion
 
             #region 获取漫画详情
-            var comicdetail = await comicProvider.GetComicDetail("63adb53484e1f369d2bda06e");
-            Console.WriteLine(comicdetail);
+            //var comicdetail = await comicProvider.GetComicDetail("63adb53484e1f369d2bda06e");
+            //Console.WriteLine(comicdetail);
             #endregion
 
             #region 获取漫画章节信息
