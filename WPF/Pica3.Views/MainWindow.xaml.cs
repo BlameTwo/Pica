@@ -49,5 +49,6 @@ namespace Pica3.Views
             //var LoginDialogView = MainService.GetService<LoginDialogView>();
             PicaShowDialog.Show(LoginDialogView);
         }
+
     }
 }

@@ -17,10 +17,16 @@
         <ResourceDictionary Source="pack://application:,,,/Pica3.UI;component/Theme/DefaultTheme.xaml" />
     </Window.Resources>
     <Grid x:Name="grid">
-        <Button
-            Width="120"
-            Height="70"
-            Click="Button_Click"
-            Content="登录" />
+
+        <dh:PicaNavigationMenu NavigationHeader="你好测试一下" OpenLength="100">
+            <dh:PicaNavigationMenu.Content>
+                <Button
+                    Width="120"
+                    Height="70"
+                    Click="Button_Click"
+                    Content="登录" />
+            </dh:PicaNavigationMenu.Content>
+        </dh:PicaNavigationMenu>
+
     </Grid>
 </dh:WindowBase>
