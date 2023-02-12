@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7</TargetFramework>
+    <TargetFrameworks>net7;net6</TargetFrameworks>
     <Nullable>enable</Nullable>
-	  <PublishAot>true</PublishAot>
+	  <PublishAot>false</PublishAot>
 	  <OutputType>Library</OutputType>
+	  <LangVersion>11</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
