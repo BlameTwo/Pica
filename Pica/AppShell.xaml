@@ -1,14 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Shell
     x:Class="Pica.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Pica"
-    Shell.FlyoutBehavior="Disabled">
-
-    <ShellContent
-        Title="登录"
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
-
+    xmlns:view="clr-namespace:Pica.Views"
+    Title="AppShell">
+    <TabBar>
+        <ShellContent
+            Title="搜索"
+            ContentTemplate="{DataTemplate view:SearchPage}"
+            Icon="search.svg" />
+        <ShellContent
+            Title="热门"
+            ContentTemplate="{DataTemplate view:HotRank}"
+            Icon="hotfill.svg" />
+        <ShellContent
+            Title="个人"
+            ContentTemplate="{DataTemplate view:UserPage}"
+            Icon="user.svg" />
+    </TabBar>
 </Shell>

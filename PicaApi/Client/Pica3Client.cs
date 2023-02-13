@@ -1,24 +1,9 @@
-﻿using Pica.Interfaces.Provider;
-using PicaApi.Services.ApiProvider;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Pica.Models.ApiModels;
-using Pica.Models.PicaJsonConverts;
 using Pica.Interfaces;
 using System;
 using System.Net;
-using System.Diagnostics;
-using System.Text.Json;
-using System.Net.Http.Json;
-using System.Text.Json.Nodes;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading;
-using System.Security.Principal;
-using Pica.Models.ApiModels.Users;
-using Pica.Services.ApiProvider;
 
 namespace PicaApi.Services.Client
 {
@@ -120,6 +105,13 @@ namespace PicaApi.Services.Client
                 _httpclient.BaseAddress = new Uri(BaseUrl);
                 _httpclient.Timeout = TimeSpan.FromSeconds(10);
             }
+        }
+
+        bool IPica3Client.IsLogin()
+        {
+            if (string.IsNullOrWhiteSpace(this.Token))
+                return false;
+            return true;
         }
     }
 }

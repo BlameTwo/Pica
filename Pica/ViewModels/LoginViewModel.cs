@@ -1,7 +1,10 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Pica.Interfaces;
 using Pica.Interfaces.Provider;
+using Pica.Models.Event;
 
 namespace Pica.ViewModels;
 
@@ -25,7 +28,19 @@ public partial class LoginViewModel:ObservableObject
     async void EnterLogin()
     {
         var result = await LoginProvider.LoginAsync(this.User, this.Passwd);
+        if(result == true)
+        {
+            WeakReferenceMessenger.Default.Send<LoginEventModel>(new LoginEventModel()
+            {
+                Message = "登录成功"
+                , IsLogin= true
+            });
+            Popup.Close();
+        }
     }
+
+    public Popup Popup { get; set; }
+
 
     [RelayCommand]
     async void SelectIp()

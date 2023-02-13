@@ -32,6 +32,8 @@ namespace Pica.Interfaces
 
         ImageQuality imageQuality { get; set; }
 
+        public bool IsLogin();
+
         string Token { get; set; }
     }
 }

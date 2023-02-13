@@ -8,6 +8,7 @@ using CommunityToolkit.Maui;
 using System.Runtime.CompilerServices;
 using Pica.ViewModels;
 using CommunityToolkit.Maui.Markup;
+using Pica.Views;
 
 namespace Pica
 {
@@ -41,7 +42,6 @@ namespace Pica
 
             //API内容控制器为单服务
             builder.Services.AddSingleton<IApisProvider, ApisProvider>();
-
             builder.Services.AddTransient<IInitProvider, InitProvider>();
             builder.Services.AddTransient<ILoginProvider, LoginProvider>();
             builder.Services.AddTransient<IUserProvider, UserProvider>();
@@ -60,13 +60,18 @@ namespace Pica
 
         public static MauiAppBuilder RegisterView(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<LoginPage>();
+            mauiAppBuilder.Services.AddSingleton<AppShell>();
+            mauiAppBuilder.Services.AddSingleton<SearchPage>();
+            mauiAppBuilder.Services.AddTransient<LoginPage>();
+            mauiAppBuilder.Services.AddTransient<UserPage>();
             return mauiAppBuilder;
         }
 
         public static MauiAppBuilder RegisterViewModel(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<LoginViewModel>();
+            mauiAppBuilder.Services.AddTransient<LoginViewModel>();
+            mauiAppBuilder.Services.AddSingleton<SearchViewModel>();
+            mauiAppBuilder.Services.AddSingleton<UserViewModel>();
             return mauiAppBuilder;
         }
     }
