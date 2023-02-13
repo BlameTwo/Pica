@@ -1,15 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7;net6</TargetFrameworks>
+    <TargetFrameworks>net6</TargetFrameworks>
     <Nullable>enable</Nullable>
 	  <OutputType>Library</OutputType>
 	  <PublishAot>false</PublishAot>
+	  <LangVersion>11</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Pica.Models.PicaJsonConverts\Pica.Models.PicaJsonConverts.csproj" />

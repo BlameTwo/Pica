@@ -1,11 +1,7 @@
 ﻿using Pica.Interfaces;
-using Pica.Models.ApiModels;
-using PicaApi.Services.ApiProvider;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Security.Cryptography;
@@ -32,7 +28,7 @@ namespace Pica.Services
             var data = $"{request.RequestUri?.OriginalString}{ApisProvider.TimeStamp}{ApisProvider.Nonce}{request.Method}{ApisProvider.ApiKey}".ToLower();
             using var hmacsha256 = new HMACSHA256(ApisProvider.SignatureKey);
             byte[] hash = hmacsha256.ComputeHash(Encoding.UTF8.GetBytes(data));
-            return Convert.ToHexString(hash).ToLower();
+            return  Convert.ToHexString(hash).ToLower();
         }
 
         public async Task<Stream> SendAsync(HttpRequestMessage request)

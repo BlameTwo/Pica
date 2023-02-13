@@ -1,7 +1,0 @@
-{
-  "profiles": {
-    "Pica.Windows": {
-      "commandName": "MsixPackage"
-    }
-  }
-}

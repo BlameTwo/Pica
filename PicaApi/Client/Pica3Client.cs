@@ -73,11 +73,15 @@ namespace PicaApi.Services.Client
 
         private void CreateHttpClient()
         {
+
             _httpclient = new HttpClient(new HttpClientHandler
             {
                 AutomaticDecompression = DecompressionMethods.All,
                 Proxy = proxy,
-                ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+                ServerCertificateCustomValidationCallback = (_, _, _, _) =>
+                {
+                    return true;
+                }
             });
             _httpclient.BaseAddress = BaseAddress ?? new Uri(BaseUrl);
             _httpclient.Timeout = TimeSpan.FromSeconds(10);
@@ -95,19 +99,23 @@ namespace PicaApi.Services.Client
 
         public void SetIp(IWebProxy proxy,string proxystring)
         {
-            ChangeProxyAndBaseAddress(proxy,new Uri($"https://{proxystring}"));
+            ChangeProxyAndBaseAddress(proxy,new Uri($"http://{proxystring}"));
         }
 
 
         public void InitClient()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             if (_httpclient == null)
             {
                 _httpclient = new HttpClient(new HttpClientHandler
                 {
                     AutomaticDecompression = DecompressionMethods.All,
                     Proxy = proxy,
-                    ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+                    ServerCertificateCustomValidationCallback = (_, _, _, _) =>
+                    {
+                        return true;
+                    }
                 });
                 _httpclient.BaseAddress = new Uri(BaseUrl);
                 _httpclient.Timeout = TimeSpan.FromSeconds(10);

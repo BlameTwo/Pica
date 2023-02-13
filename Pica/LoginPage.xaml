@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Pica.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:Pica.ViewModels"
+    Title="登录"
+    x:DataType="vm:LoginViewModel">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+    </ContentPage.Behaviors>
+    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Picker
+            x:Name="pickerip"
+            Title="选择代理"
+            Grid.Row="0"
+            HorizontalTextAlignment="Center"
+            ItemsSource="{Binding Iplist, Mode=OneWay}"
+            SelectedItem="{x:Binding IpSelect,
+                                     Mode=TwoWay}"
+            WidthRequest="250">
+            <Picker.Behaviors>
+                <toolkit:EventToCommandBehavior Command="{Binding SelectIpCommand}" EventName="SelectedIndexChanged" />
+            </Picker.Behaviors>
+        </Picker>
+        <Editor
+            Grid.Row="1"
+            CharacterSpacing="5"
+            HorizontalTextAlignment="Center"
+            Placeholder="输入账号"
+            Text="{Binding User, Mode=TwoWay}"
+            WidthRequest="250" />
+        <Entry
+            Grid.Row="2"
+            CharacterSpacing="5"
+            HorizontalTextAlignment="Center"
+            IsPassword="True"
+            Placeholder="输入密码"
+            ReturnType="Send"
+            Text="{Binding Passwd, Mode=TwoWay}"
+            WidthRequest="250" />
+
+        <Button
+            Grid.Row="3"
+            Command="{Binding EnterLoginCommand}"
+            Text="登录" />
+    </Grid>
+
+</ContentPage>
