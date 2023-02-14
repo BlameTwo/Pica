@@ -6,21 +6,53 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:Pica.ViewModels"
     Title="个人"
-    x:DataType="vm:UserViewModel">
-    <StackLayout VerticalOptions="Center">
-        <StackLayout.Behaviors>
-            <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
-        </StackLayout.Behaviors>
-        <Button
-            Margin="10"
-            Clicked="Button_Clicked"
-            HeightRequest="50"
-            IsVisible="{Binding Loginbuttonvis, Mode=OneWay}"
-            Text="去登陆"
-            WidthRequest="100" />
-        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-            <Label Text="欢迎！" />
-            <Label Text="{Binding UserName, Mode=OneWay}" />
-        </StackLayout>
-    </StackLayout>
+    x:DataType="vm:UserViewModel"
+    Routing.Route="shell/user">
+    <RefreshView Command="{Binding RefershProfileCommand}" IsRefreshing="{Binding Isrefersh, Mode=TwoWay}">
+
+        <ScrollView>
+            <StackLayout>
+                <StackLayout.Behaviors>
+                    <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+                </StackLayout.Behaviors>
+                <Border
+                    Margin="5"
+                    Padding="25"
+                    AnchorX="10"
+                    AnchorY="10"
+                    Background="{DynamicResource SecondaryBrush}">
+                    <StackLayout>
+                        <toolkit:AvatarView
+                            BorderColor="{DynamicResource Primary}"
+                            BorderWidth="2"
+                            CornerRadius="80"
+                            HeightRequest="80"
+                            ImageSource="{Binding Userpic, Mode=OneWay}"
+                            WidthRequest="80" />
+                        <StackLayout
+                            Margin="0,10,0,0"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <Label FontSize="15" Text="欢迎！" />
+                            <Label FontSize="15" Text="{Binding Userprofile.Data.Name, Mode=OneWay}" />
+                        </StackLayout>
+                        <StackLayout
+                            Margin="0,10"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <Label FontSize="15" Text="等级:" />
+                            <Label FontSize="15" Text="{Binding Userprofile.Data.Level, Mode=OneWay}" />
+                        </StackLayout>
+                        <Label HorizontalOptions="Center" Text="{Binding Userprofile.Data.SubName}" />
+                        <Button
+                            Margin="0,10,0,0"
+                            Padding="5"
+                            Command="{Binding PashPicaCommand}"
+                            HorizontalOptions="Center"
+                            Text="打卡" />
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
 </ContentPage>

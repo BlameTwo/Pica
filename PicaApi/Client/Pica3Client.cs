@@ -4,6 +4,7 @@ using Pica.Models.ApiModels;
 using Pica.Interfaces;
 using System;
 using System.Net;
+using System.IO;
 
 namespace PicaApi.Services.Client
 {
@@ -113,5 +114,8 @@ namespace PicaApi.Services.Client
                 return false;
             return true;
         }
+
+        public Uri GetIp() => BaseAddress??new(BaseUrl);
+
     }
 }

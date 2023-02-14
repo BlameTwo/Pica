@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="Pica.Views.LoginTipMessagePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    CanBeDismissedByTappingOutsideOfPopup="False">
+    <VerticalStackLayout Padding="10">
+        <Label
+            FontSize="25"
+            HorizontalOptions="Center"
+            Text="你尚未登录"
+            VerticalOptions="Center" />
+        <Label
+            Margin="5"
+            FontSize="15"
+            HorizontalOptions="Center"
+            MaximumWidthRequest="150"
+            Text="未登录意味着我们无法从哔咔中获得任何数据，因此你需要登录"
+            VerticalOptions="Center" />
+        <Button
+            Clicked="Button_Clicked"
+            HorizontalOptions="Center"
+            Text="去登陆" />
+    </VerticalStackLayout>
+</toolkit:Popup>

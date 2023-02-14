@@ -61,6 +61,6 @@ namespace Pica.Models.ApiModels.Users
         /// <summary>
         /// 官方的文件服务器前缀
         /// </summary>
-        [JsonPropertyName("fileserver")]public string FileServer { get; set; }
+        [JsonPropertyName("fileServer")]public string FileServer { get; set; }
     }
 }

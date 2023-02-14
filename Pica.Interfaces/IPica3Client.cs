@@ -1,6 +1,7 @@
 ﻿using Pica.Models.ApiModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -26,6 +27,12 @@ namespace Pica.Interfaces
         public void SetIp(IWebProxy proxy, string proxystring);
 
         /// <summary>
+        /// 获得设置的分流地址
+        /// </summary>
+        /// <returns></returns>
+        public Uri GetIp();
+
+        /// <summary>
         /// 初始化无token客户端
         /// </summary>
         void InitClient();
@@ -35,5 +42,6 @@ namespace Pica.Interfaces
         public bool IsLogin();
 
         string Token { get; set; }
+
     }
 }

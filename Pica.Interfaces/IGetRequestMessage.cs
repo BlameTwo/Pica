@@ -27,7 +27,12 @@ namespace Pica.Interfaces
             bool istoken,
             Dictionary<string, string> parames = null);
 
+        HttpRequestMessage GetImageMessage(HttpMethod httpMethod, string url);
+
 
         Task<Stream> SendAsync(HttpRequestMessage request);
+
+        Task<Stream> ImageGetAsync(HttpRequestMessage request);
+
     }
 }

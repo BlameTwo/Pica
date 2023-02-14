@@ -35,11 +35,12 @@ public partial class LoginViewModel:ObservableObject
                 Message = "登录成功"
                 , IsLogin= true
             });
-            Popup.Close();
+
+            //这里登录后退回上一级
+            await Shell.Current.GoToAsync("..", true);
         }
     }
 
-    public Popup Popup { get; set; }
 
 
     [RelayCommand]

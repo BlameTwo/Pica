@@ -41,6 +41,8 @@ namespace Pica.Services
         }
 
 
+
+
         public HttpRequestMessage GetRequestMessageAsync(HttpMethod httpMethod,
             string uri,
             JsonContent poststring,
@@ -72,6 +74,39 @@ namespace Pica.Services
             request.Headers.Add("User-Agent", ApisProvider.DefaultUA);
             request.Headers.Add("Host", "picaapi.picacomic.com");
             return request;
+        }
+
+        public HttpRequestMessage GetImageMessage(HttpMethod httpMethod, string url)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            var overrideBaseAddress = Pica3Client.GetIp();
+            if (overrideBaseAddress != null)
+            {
+                var uri = new Uri(url);
+                if (url.Contains("tobeimg"))
+                {
+                    request.RequestUri = new Uri(overrideBaseAddress,uri.PathAndQuery.Replace("/static/tobeimg", ""));
+                    request.Headers.Add("Host", "img.picacomic.com");
+                }
+                else if (url.Contains("tobs"))
+                {
+                    request.RequestUri = new Uri(overrideBaseAddress, uri.PathAndQuery.Replace("/tobs", ""));
+                    request.Headers.Add("Host", uri.Host);
+                }
+                else
+                {
+                    request.RequestUri = new Uri(overrideBaseAddress, uri.PathAndQuery);
+                    request.Headers.Add("Host", uri.Host);
+                }
+            }
+            return request;
+        }
+
+        public async Task<Stream> ImageGetAsync(HttpRequestMessage request)
+        {
+            var response = await Pica3Client._httpclient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStreamAsync();
         }
     }
 }

@@ -50,6 +50,7 @@ namespace Pica
 
             #region 注册请求方法
             builder.Services.AddSingleton<IGetRequestMessage, GetRequestMessage>();
+            builder.Services.AddSingleton<IImageDownloadProvider, ImageDownloadProvider>();
             #endregion
 
             #region 注册Client
@@ -64,6 +65,8 @@ namespace Pica
             mauiAppBuilder.Services.AddSingleton<SearchPage>();
             mauiAppBuilder.Services.AddTransient<LoginPage>();
             mauiAppBuilder.Services.AddTransient<UserPage>();
+            mauiAppBuilder.Services.AddTransient<HotRank>();
+            mauiAppBuilder.Services.AddTransient<LoginTipMessagePopup>();
             return mauiAppBuilder;
         }
 
@@ -71,7 +74,8 @@ namespace Pica
         {
             mauiAppBuilder.Services.AddTransient<LoginViewModel>();
             mauiAppBuilder.Services.AddSingleton<SearchViewModel>();
-            mauiAppBuilder.Services.AddSingleton<UserViewModel>();
+            mauiAppBuilder.Services.AddTransient<UserViewModel>();
+            mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
             return mauiAppBuilder;
         }
     }

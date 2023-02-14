@@ -15,6 +15,6 @@ public partial class UserPage : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        this.ShowPopup(this.Handler.MauiContext.Services.GetService<LoginPage>());
+        Shell.Current.GoToAsync("shell/login", true);
     }
 }
