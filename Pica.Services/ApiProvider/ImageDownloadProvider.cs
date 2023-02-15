@@ -18,9 +18,16 @@ public class ImageDownloadProvider : IImageDownloadProvider
 
     public async Task<Stream> DownloadImage(string url)
     {
-        var request = GetRequestMessage.GetImageMessage(HttpMethod.Get
-            ,url);
-        var reqonse = await GetRequestMessage.ImageGetAsync(request).ConfigureAwait(false);
-        return reqonse;
+        try
+        {
+            var request = GetRequestMessage.GetImageMessage(HttpMethod.Get
+                , url);
+            var reqonse = await GetRequestMessage.ImageGetAsync(request).ConfigureAwait(false);
+            return reqonse;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace Pica.Models.ApiModels.Users
 
     public class Comics_Docs
     {
-        [JsonPropertyName("id")]public string ID { get; set; }
+        [JsonPropertyName("_id")]public string ID { get; set; }
         [JsonPropertyName("title")]public string Title { get; set; }
         [JsonPropertyName("author")]public string SubTitle { get; set; }
 

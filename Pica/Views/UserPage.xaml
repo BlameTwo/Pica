@@ -9,22 +9,20 @@
     x:DataType="vm:UserViewModel"
     Routing.Route="shell/user">
     <RefreshView Command="{Binding RefershProfileCommand}" IsRefreshing="{Binding Isrefersh, Mode=TwoWay}">
-
         <ScrollView>
             <StackLayout>
                 <StackLayout.Behaviors>
                     <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
                 </StackLayout.Behaviors>
-                <Border
-                    Margin="5"
-                    Padding="25"
-                    AnchorX="10"
-                    AnchorY="10"
-                    Background="{DynamicResource SecondaryBrush}">
+                <Border Margin="5" Padding="25">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
                     <StackLayout>
                         <toolkit:AvatarView
-                            BorderColor="{DynamicResource Primary}"
-                            BorderWidth="2"
+                            Padding="0"
+                            BorderColor="{DynamicResource PrimaryBrush}"
+                            BorderWidth="1"
                             CornerRadius="80"
                             HeightRequest="80"
                             ImageSource="{Binding Userpic, Mode=OneWay}"

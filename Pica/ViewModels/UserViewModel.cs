@@ -34,7 +34,7 @@ public partial class UserViewModel:ObservableRecipient, IRecipient<LoginEventMod
     [RelayCommand]
     async void PashPica()
     {
-        var result = await UserProvider.UserPauch();
+        var result = await UserProvider.UserPauch().ConfigureAwait(false);
         if (result.Data == null) return;
         if (result.Data.Resource.Status == "fail")
         {
@@ -64,13 +64,13 @@ public partial class UserViewModel:ObservableRecipient, IRecipient<LoginEventMod
     async void Refershuser()
     {
         Isrefersh = true;
-        var result = await UserProvider.GetUserProfile();
+        var result = await UserProvider.GetUserProfile().ConfigureAwait(false);
         if (result.Code == 401) return;
         if(result.Data.Data.Avatar != null)
         {
             //得替换一下字符串
             string url = result.Data.Data.Avatar.FileServer+"/"+"static"+"/" + result.Data.Data.Avatar.UriPath;
-            var stream = await ImageDownloadProvider.DownloadImage(url);
+            var stream = await ImageDownloadProvider.DownloadImage(url).ConfigureAwait(false);
             this.Userpic = ImageSource.FromStream(()=>stream);
         }
         Userprofile = result.Data;

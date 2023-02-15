@@ -16,6 +16,11 @@
             ContentTemplate="{DataTemplate view:HotRank}"
             Icon="hotfill.svg" />
         <ShellContent
+            x:Name="random"
+            Title="随机"
+            ContentTemplate="{DataTemplate view:RandomPage}"
+            Icon="random.svg" />
+        <ShellContent
             Title="个人"
             ContentTemplate="{DataTemplate view:UserPage}"
             Icon="user.svg" />

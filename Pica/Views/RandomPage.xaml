@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Pica.Views.RandomPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:datavm="clr-namespace:Pica.Models.ConvertViewModel"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:Pica.ViewModels"
+    Title="随机"
+    x:DataType="vm:RandomViewModel"
+    Routing.Route="shell/random">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+    </ContentPage.Behaviors>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <RefreshView
+            Grid.Row="0"
+            Command="{Binding ScrollRefershCommand}"
+            IsRefreshing="{Binding Isrefersh, Mode=TwoWay}">
+            <ScrollView Scrolled="ScrollView_Scrolled">
+                <CollectionView ItemsSource="{x:Binding ComicList, Mode=OneWay}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="datavm:RandomItemDataViewModel">
+                            <Border Margin="5" Padding="10">
+                                <Border.Behaviors>
+                                    <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+                                </Border.Behaviors>
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="150"
+                                        Source="{Binding Imagepic, Mode=OneWay}"
+                                        WidthRequest="100" />
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Title, Mode=OneWay}"
+                                        VerticalOptions="Center" />
+                                </Grid>
+
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </RefreshView>
+        <ActivityIndicator
+            Grid.Row="1"
+            HeightRequest="15"
+            IsRunning="{Binding Isadd, Mode=TwoWay}"
+            WidthRequest="15" />
+    </Grid>
+</ContentPage>

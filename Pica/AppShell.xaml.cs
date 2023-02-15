@@ -13,6 +13,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("shell/search", typeof(SearchPage));
         Routing.RegisterRoute("shell/user", typeof(UserPage));
         Routing.RegisterRoute("shell/rank", typeof(HotRank));
+        Routing.RegisterRoute("shell/random", typeof(RandomPage));
         this.Navigated += AppShell_Navigated;
     }
 

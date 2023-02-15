@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using Pica.Models.ApiModels.Comics;
+using Pica.Models.ApiModels.Users;
 
 namespace Pica.Services.ApiProvider
 {
@@ -41,6 +42,17 @@ namespace Pica.Services.ApiProvider
         public Task<string> GetComicPages(string bookid, int Episodeid, int page)
         {
             throw new System.NotImplementedException();
+        }
+
+        public async Task<ResultCode<RandomComicData>> GetRandomComic()
+        {
+            string url = $"comics/random";
+            var quest = GetRequestMessage.GetRequestMessageAsync(HttpMethod.Get
+                , url, null, true, null);
+
+            var result = await Pica3Client._httpclient.SendAsync(quest).ConfigureAwait(false); ;
+            Stream stream = await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            return Pica.Models.PicaJsonConverts.ReadJson.Read<ResultCode<RandomComicData>>(stream);
         }
 
         public async Task<ResultCode<SearchComicData>> SearchComic(string keyword, int pagesize = 1)

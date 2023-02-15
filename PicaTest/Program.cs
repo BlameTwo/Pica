@@ -79,14 +79,13 @@ namespace PicaTest
             var userdata = await userProvider.GetUserProfile();
             #endregion
             #region 哔咔签到
-            //var punch = await userProvider.UserPauch().ConfigureAwait(false);
-            //Console.WriteLine(punch.Data.Resource.Status);
+            var punch = await userProvider.UserPauch().ConfigureAwait(false);
+            Console.WriteLine(punch.Data.Resource.Status);
             #endregion
 
-
-
+            #region 漫画操作
             #region 个人收藏漫画
-            var myfav = await userProvider.GetUserFavourite();
+            //var myfav = await userProvider.GetUserFavourite();
             //foreach (var item in myfav.Data.Comics.Docs)
             //{
             //    Console.WriteLine(item.Title);
@@ -107,6 +106,13 @@ namespace PicaTest
             //var comicpages = await comicProvider.GetComicEpisode("63adb53484e1f369d2bda06e", 1);
             //Console.WriteLine(comicpages);
             #endregion
+
+            #region 获得随机本子
+            var randomcomic = await comicProvider.GetRandomComic().ConfigureAwait(false);
+            #endregion
+            #endregion
+
+
             Console.ReadLine();
         }
 
