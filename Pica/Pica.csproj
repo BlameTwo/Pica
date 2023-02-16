@@ -94,6 +94,9 @@
 	  <MauiXaml Update="Views\Details\ComicDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Details\ComicDocumentDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\HotRank.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

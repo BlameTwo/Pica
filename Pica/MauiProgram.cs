@@ -71,6 +71,7 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<RandomPage>();
             mauiAppBuilder.Services.AddTransient<LoginTipMessagePopup>();
             mauiAppBuilder.Services.AddTransient<ComicDetailPage>();
+            mauiAppBuilder.Services.AddTransient<ComicDocumentDetailPage>();
             return mauiAppBuilder;
         }
 
@@ -83,6 +84,7 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
             mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
             mauiAppBuilder.Services.AddTransient<ComicDetailViewModel>();
+            mauiAppBuilder.Services.AddTransient<ComicDocumentDetailViewModel>();
             return mauiAppBuilder;
         }
     }

@@ -12,7 +12,7 @@ public partial class RandomPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+    private async void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
     {
         if(this.BindingContext is RandomViewModel vm)
         {
@@ -27,7 +27,9 @@ public partial class RandomPage : ContentPage
                 //临时解决方案
                 if ((int)e.ScrollY == (int)maxPos)
                 {
-                    vm.AddData();
+                    scroll.Scrolled-= ScrollView_Scrolled;
+                    await vm.AddData();
+                    scroll.Scrolled += ScrollView_Scrolled;
                 }
             }
             catch { }

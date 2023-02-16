@@ -44,6 +44,6 @@ namespace Pica.Interfaces.Provider
         /// <param name="Episodeid"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        Task<string> GetComicPages(string bookid, int Episodeid, int page);
+        Task<ResultCode<ComicPageData>> GetComicPages(string bookid, string order, int page=1);
     }
 }

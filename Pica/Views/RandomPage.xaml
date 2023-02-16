@@ -20,7 +20,10 @@
             Grid.Row="0"
             Command="{Binding ScrollRefershCommand}"
             IsRefreshing="{Binding Isrefersh, Mode=TwoWay}">
-            <ScrollView IsClippedToBounds="True" Scrolled="ScrollView_Scrolled">
+            <ScrollView
+                x:Name="scroll"
+                IsClippedToBounds="True"
+                Scrolled="ScrollView_Scrolled">
                 <CollectionView
                     x:Name="views"
                     ItemTemplate="{DynamicResource DefaultComicItemStyle}"

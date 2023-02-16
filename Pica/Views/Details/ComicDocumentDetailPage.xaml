@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Pica.Views.Details.ComicDocumentDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:Pica.ViewModels.DetailsViewModels"
+    Title="{Binding Title}"
+    x:DataType="vm:ComicDocumentDetailViewModel"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+    </ContentPage.Behaviors>
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="这里是漫画观看页面！"
+            VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

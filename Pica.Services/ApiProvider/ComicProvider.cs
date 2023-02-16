@@ -39,10 +39,6 @@ namespace Pica.Services.ApiProvider
             return Models.PicaJsonConverts.ReadJson.Read<ResultCode<ComicEpisodeData>>(stream);
         }
 
-        public Task<string> GetComicPages(string bookid, int Episodeid, int page)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public async Task<ResultCode<RandomComicData>> GetRandomComic()
         {
@@ -65,5 +61,13 @@ namespace Pica.Services.ApiProvider
             return Pica.Models.PicaJsonConverts.ReadJson.Read<ResultCode<SearchComicData>>(stream);
         }
 
+        public async Task<ResultCode<ComicPageData>> GetComicPages(string bookid, string order, int page)
+        {
+            string url = $"comics/{bookid}/order/{order}/pages?page={page}";
+            var quest = GetRequestMessage.GetRequestMessageAsync(HttpMethod.Get, url, null, true);
+            var resultstream = await Pica3Client._httpclient.SendAsync(quest).ConfigureAwait(false);
+            var stream =  await resultstream.Content.ReadAsStreamAsync();
+            return Pica.Models.PicaJsonConverts.ReadJson.Read<ResultCode<ComicPageData>>(stream);
+        }
     }
 }

@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Comics;
 using Pica.Models.ConvertViewModel;
+using Pica.Views.Details;
 using System.Collections.ObjectModel;
 
 namespace Pica.ViewModels.DetailsViewModels;
@@ -40,6 +41,17 @@ public partial class ComicDetailViewModel : ObservableObject, IQueryAttributable
         this.EpsList = pageslist.Data.ComicEp_Eps;
     }
 
+    [RelayCommand]
+    async void SelectPage()
+    {
+        Dictionary<string, Object> value = new();
+        value.Add("Order", this.Selectpage.Order.ToString());
+        value.Add("ID", this.Id);
+        value.Add("ComicTitle", this.Comicdata.Title);
+        await Shell.Current.GoToAsync(nameof(ComicDocumentDetailPage),true,value);
+        
+    }
+
     [ObservableProperty]
     string _title;
     public IComicProvider ComicProvider { get; }
@@ -47,6 +59,9 @@ public partial class ComicDetailViewModel : ObservableObject, IQueryAttributable
 
     [ObservableProperty]
     ComicDetail comicdata;
+
+    [ObservableProperty]
+    Eps_Docs _selectpage;
 
     [ObservableProperty]
     ImageSource imagepic;

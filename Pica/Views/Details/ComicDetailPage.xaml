@@ -117,10 +117,18 @@
                 Grid.Row="2"
                 Margin="0,10,0,0"
                 ItemsSource="{Binding EpsList.Eps_Docs}"
+                SelectedItem="{Binding Selectpage, Mode=TwoWay}"
+                SelectionChangedCommand="{Binding SelectPageCommand}"
+                SelectionMode="Single"
                 VerticalOptions="StartAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="dpsdata:Eps_Docs">
-                        <Button Margin="5" Text="{Binding Title}" />
+                        <Border Margin="5" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+                            <Label Text="{Binding Title, Mode=OneWay}" />
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

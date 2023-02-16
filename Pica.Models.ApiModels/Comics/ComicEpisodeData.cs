@@ -31,7 +31,7 @@ public class EpsConverter : JsonConverter<List<Eps_Docs>>
         List<Eps_Docs> list = new();
         foreach (var item in job)
         {
-            list.Add(item.Deserialize<Eps_Docs>());
+            list.Add(item.Deserialize<Eps_Docs>()!);
         }
         return list;
     }

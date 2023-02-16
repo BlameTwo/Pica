@@ -6,6 +6,7 @@ using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Users;
 using Pica.Models.ConvertViewModel;
 using Pica.Views.Details;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Pica.ViewModels;
@@ -48,14 +49,17 @@ public partial class RandomViewModel:ObservableObject
         await Shell.Current.GoToAsync($"{nameof(ComicDetailPage)}?Id={this.Selectitem.ID}");
     }
 
-    public async void AddData()
+    public async Task AddData()
     {
         Isadd = true;
         var result = (await ComicProvider.GetRandomComic().ConfigureAwait(false)).Data.ComicList.ToObservableCollection();
         foreach (var item in result)
         {
-            var val = item.ChildConvert<Comics_Docs, RandomItemDataViewModel,IImageDownloadProvider>(ImageDownloadProvider);
-            this.ComicList.Add(val);
+            for (int i = 0; i < result.Count; i++)
+            {
+                var val = result[i].ChildConvert<Comics_Docs, RandomItemDataViewModel, IImageDownloadProvider>(ImageDownloadProvider);
+                ComicList.Add(val);
+            }
         }
         Isadd = false;
     }
