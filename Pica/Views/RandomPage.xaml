@@ -3,7 +3,6 @@
     x:Class="Pica.Views.RandomPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:datavm="clr-namespace:Pica.Models.ConvertViewModel"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:Pica.ViewModels"
     Title="随机"
@@ -21,38 +20,15 @@
             Grid.Row="0"
             Command="{Binding ScrollRefershCommand}"
             IsRefreshing="{Binding Isrefersh, Mode=TwoWay}">
-            <ScrollView Scrolled="ScrollView_Scrolled">
-                <CollectionView ItemsSource="{x:Binding ComicList, Mode=OneWay}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="datavm:RandomItemDataViewModel">
-                            <Border Margin="5" Padding="10">
-                                <Border.Behaviors>
-                                    <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
-                                </Border.Behaviors>
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="5" />
-                                </Border.StrokeShape>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Image
-                                        Aspect="AspectFit"
-                                        HeightRequest="150"
-                                        Source="{Binding Imagepic, Mode=OneWay}"
-                                        WidthRequest="100" />
-                                    <Label
-                                        Grid.Column="1"
-                                        HorizontalOptions="Center"
-                                        Text="{Binding Title, Mode=OneWay}"
-                                        VerticalOptions="Center" />
-                                </Grid>
-
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+            <ScrollView IsClippedToBounds="True" Scrolled="ScrollView_Scrolled">
+                <CollectionView
+                    x:Name="views"
+                    ItemTemplate="{DynamicResource DefaultComicItemStyle}"
+                    ItemsSource="{x:Binding ComicList,
+                                            Mode=TwoWay}"
+                    SelectedItem="{Binding Selectitem, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectChangedCommand}"
+                    SelectionMode="Single" />
             </ScrollView>
         </RefreshView>
         <ActivityIndicator

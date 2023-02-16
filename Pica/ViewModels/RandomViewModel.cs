@@ -5,6 +5,7 @@ using Pica.Helper;
 using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Users;
 using Pica.Models.ConvertViewModel;
+using Pica.Views.Details;
 using System.Collections.ObjectModel;
 
 namespace Pica.ViewModels;
@@ -29,7 +30,7 @@ public partial class RandomViewModel:ObservableObject
     void ScrollRefersh() => refershrandom();
     public async void refershrandom()
     {
-        var list = (await ComicProvider.GetRandomComic().ConfigureAwait(false)).Data.ComicList.ToObservable();
+        var list = (await ComicProvider.GetRandomComic()).Data.ComicList.ToObservable();
         this.ComicList.Clear();
         for (int i = 0; i < list.Count; i++)
         {
@@ -38,6 +39,13 @@ public partial class RandomViewModel:ObservableObject
         }
 
         Isrefersh = false;
+    }
+
+
+    [RelayCommand]
+    async void SelectChanged()
+    {
+        await Shell.Current.GoToAsync($"{nameof(ComicDetailPage)}?Id={this.Selectitem.ID}");
     }
 
     public async void AddData()
@@ -60,6 +68,10 @@ public partial class RandomViewModel:ObservableObject
 
     [ObservableProperty]
     bool isadd;
+
+    [ObservableProperty]
+    RandomItemDataViewModel _selectitem;
+
     public IComicProvider ComicProvider { get; }
     public IImageDownloadProvider ImageDownloadProvider { get; }
 }

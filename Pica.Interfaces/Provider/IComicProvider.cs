@@ -8,7 +8,7 @@ namespace Pica.Interfaces.Provider
     public interface IComicProvider
     {
         /// <summary>
-        /// 搜索漫画
+        /// 搜索本子
         /// </summary>
         /// <param name="keyword"></param>
         /// <param name="pagesize"></param>

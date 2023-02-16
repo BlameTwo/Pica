@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:view="clr-namespace:Pica.Views"
     Title="AppShell">
-    <TabBar>
+    <TabBar x:Name="tabcontrol">
         <ShellContent
             Title="搜索"
             ContentTemplate="{DataTemplate view:SearchPage}"

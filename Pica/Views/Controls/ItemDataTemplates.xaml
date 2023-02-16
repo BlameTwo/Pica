@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="Pica.Views.Controls.ItemDataTemplates"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:datavm="clr-namespace:Pica.Models.ConvertViewModel"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <DataTemplate x:Key="DefaultComicItemStyle" x:DataType="datavm:RandomItemDataViewModel">
+        <Border Margin="5" Padding="10">
+            <Border.Behaviors>
+                <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+            </Border.Behaviors>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="160"
+                    Source="{Binding Imagepic, Mode=OneWay}"
+                    WidthRequest="120">
+                    <Image.GestureRecognizers>
+                        <!--  打开图片详情的命令，需要双击图片  -->
+                        <TapGestureRecognizer Command="{Binding GoImageOpenCommand}" NumberOfTapsRequired="2" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Grid Grid.Column="1" Margin="10,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout>
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="Start"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Title, Mode=OneWay}"
+                            TextType="Text"
+                            VerticalOptions="Center" />
+                        <Label Margin="0,5,0,0" Text="{Binding SubTitle, Mode=OneWay}" />
+                        <Label Margin="0,5,0,0" Text="{Binding PagesCount, Mode=OneWay}" />
+                    </StackLayout>
+                    <Button
+                        Grid.Row="1"
+                        Margin="0,5,0,0"
+                        Command="{Binding GoOpenCommand}"
+                        HorizontalOptions="End"
+                        Text="详情"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal" />
+                    <VisualState Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Transparent" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

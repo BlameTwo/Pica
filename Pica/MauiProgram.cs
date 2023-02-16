@@ -10,6 +10,8 @@ using Pica.ViewModels;
 using CommunityToolkit.Maui.Markup;
 using Pica.Views;
 using Microsoft.Maui.LifecycleEvents;
+using Pica.Views.Details;
+using Pica.ViewModels.DetailsViewModels;
 
 namespace Pica
 {
@@ -68,6 +70,7 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<HotRank>();
             mauiAppBuilder.Services.AddTransient<RandomPage>();
             mauiAppBuilder.Services.AddTransient<LoginTipMessagePopup>();
+            mauiAppBuilder.Services.AddTransient<ComicDetailPage>();
             return mauiAppBuilder;
         }
 
@@ -78,6 +81,8 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<UserViewModel>();
             mauiAppBuilder.Services.AddTransient<RandomViewModel>();
             mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
+            mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
+            mauiAppBuilder.Services.AddTransient<ComicDetailViewModel>();
             return mauiAppBuilder;
         }
     }

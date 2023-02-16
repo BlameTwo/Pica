@@ -1,6 +1,7 @@
 using CommunityToolkit.Maui.Views;
 using Pica.Interfaces;
 using Pica.Views;
+using Pica.Views.Details;
 
 namespace Pica;
 
@@ -14,6 +15,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("shell/user", typeof(UserPage));
         Routing.RegisterRoute("shell/rank", typeof(HotRank));
         Routing.RegisterRoute("shell/random", typeof(RandomPage));
+        Routing.RegisterRoute(nameof(ComicDetailPage), typeof(ComicDetailPage));
         this.Navigated += AppShell_Navigated;
     }
 

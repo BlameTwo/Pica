@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Pica.Views.Details.ComicDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dpsdata="clr-namespace:Pica.Models.ApiModels.Comics;assembly=Pica.Models.ApiModels"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:Pica.ViewModels.DetailsViewModels"
+    Title="{Binding Comicdata.Title, Mode=OneWay}"
+    x:DataType="vm:ComicDetailViewModel"
+    Shell.TabBarIsVisible="False">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+    </ContentPage.Behaviors>
+    <ScrollView>
+        <Grid Margin="10" RowDefinitions="190,auto,auto">
+            <Grid ColumnDefinitions="auto,4*">
+                <Image HorizontalOptions="Start" Source="{Binding Imagepic, Mode=OneWay}" />
+                <Grid
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    RowDefinitions="auto,auto,auto,*">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Start"
+                        Text="{Binding Comicdata.SubTitle, Mode=OneWay}" />
+                    <StackLayout
+                        Grid.Row="1"
+                        Margin="0,5,0,0"
+                        Orientation="Horizontal"
+                        VerticalOptions="StartAndExpand">
+                        <Label FontSize="16" Text="共" />
+                        <Label FontAttributes="Bold" Text="{Binding Comicdata.PagesCount}" />
+                        <Label FontSize="16" Text="页" />
+
+                        <Label FontSize="16" Text="，共" />
+                        <Label FontAttributes="Bold" Text="{Binding Comicdata.EpsCount}" />
+                        <Label FontSize="16" Text="话" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="2"
+                        Margin="0,5,0,0"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Label FontSize="16" Text="发布者：" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding Comicdata.TeamDisplayName}" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="3"
+                        Margin="0,5,0,0"
+                        Orientation="Vertical"
+                        VerticalOptions="EndAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox />
+                            <Label
+                                Margin="-5,0,0,0"
+                                Text="收藏"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                        <Border
+                            Margin="0,0,0,0"
+                            Padding="5"
+                            StrokeThickness="0">
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                        Source="like.svg"
+                                        VerticalOptions="Center"
+                                        WidthRequest="14" />
+                                    <Label
+                                        FontSize="16"
+                                        Text="{Binding Comicdata.TotalLikes}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <StackLayout Margin="5,0,0,0" Orientation="Horizontal">
+                                    <Image
+                                        Source="view.svg"
+                                        VerticalOptions="Center"
+                                        WidthRequest="17" />
+                                    <Label
+                                        FontSize="16"
+                                        Text="{Binding Comicdata.ViewCount}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <StackLayout Margin="5,0,0,0" Orientation="Horizontal">
+                                    <Image
+                                        Source="comments.svg"
+                                        VerticalOptions="Center"
+                                        WidthRequest="17" />
+                                    <Label
+                                        FontSize="16"
+                                        Text="{Binding Comicdata.TotalComment}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,5,0,0"
+                Orientation="Vertical">
+                <Label Text="简介：" />
+                <Label
+                    FontSize="10"
+                    LineBreakMode="CharacterWrap"
+                    Text="{Binding Comicdata.Description, Mode=OneWay}"
+                    TextColor="Gray" />
+            </StackLayout>
+            <CollectionView
+                Grid.Row="2"
+                Margin="0,10,0,0"
+                ItemsSource="{Binding EpsList.Eps_Docs}"
+                VerticalOptions="StartAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dpsdata:Eps_Docs">
+                        <Button Margin="5" Text="{Binding Title}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

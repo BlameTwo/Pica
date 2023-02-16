@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Users;
 using Pica.Services.Interfaces;
+using Pica.Views.Details;
 
 namespace Pica.Models.ConvertViewModel;
 
@@ -30,6 +31,16 @@ public partial class RandomItemDataViewModel :
         Picload = false;
     }
 
+
+    [RelayCommand]
+    async void GoOpen() =>
+        await Shell.Current.GoToAsync($"{nameof(ComicDetailPage)}?Id={this.ID}");
+
+    [RelayCommand]
+    void GoImageOpen()
+    {
+
+    }
 
     [ObservableProperty]
     private bool _picload;
