@@ -3,6 +3,7 @@
     x:Class="Pica.Views.Controls.ItemDataTemplates"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:comicpagedata="clr-namespace:Pica.Models.ApiModels.Comics;assembly=Pica.Models.ApiModels"
     xmlns:datavm="clr-namespace:Pica.Models.ConvertViewModel"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <DataTemplate x:Key="DefaultComicItemStyle" x:DataType="datavm:RandomItemDataViewModel">
@@ -64,5 +65,13 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
         </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DefaultComicPageImage" x:DataType="datavm:WatchComicPagesItemDataViewModel">
+        <Image Aspect="AspectFit" Source="{Binding ImageSource, Mode=TwoWay}">
+            <Image.Behaviors>
+                <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+            </Image.Behaviors>
+        </Image>
     </DataTemplate>
 </ResourceDictionary>

@@ -1,5 +1,4 @@
-﻿using Android.Content;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Comics;

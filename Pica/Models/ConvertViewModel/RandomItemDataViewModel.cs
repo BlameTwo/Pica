@@ -14,12 +14,6 @@ public partial class RandomItemDataViewModel :
 {
     public IImageDownloadProvider ChildParamer { get; set; }
 
-    public RandomItemDataViewModel()
-    {
-        
-    }
-
-
 
     [RelayCommand]
     async void Loaded()

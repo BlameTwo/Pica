@@ -12,6 +12,8 @@ using Pica.Views;
 using Microsoft.Maui.LifecycleEvents;
 using Pica.Views.Details;
 using Pica.ViewModels.DetailsViewModels;
+using Pica.Models.ApiModels.Comics;
+using Pica.Models.ApiModels.Users;
 
 namespace Pica
 {
@@ -34,7 +36,9 @@ namespace Pica
             builder
                 .RegisterApi()
                 .RegisterView()
-                .RegisterViewModel();
+                .RegisterViewModel()
+                .RegisterExtend();
+            
             return builder.Build();
         }
 
@@ -52,13 +56,18 @@ namespace Pica
 
             #region 注册请求方法
             builder.Services.AddSingleton<IGetRequestMessage, GetRequestMessage>();
-            builder.Services.AddSingleton<IImageDownloadProvider, ImageDownloadProvider>();
+            builder.Services.AddTransient<IImageDownloadProvider, ImageDownloadProvider>();
             #endregion
 
             #region 注册Client
             builder.Services.AddSingleton<IPica3Client, Pica3Client>();
             #endregion
             return builder;
+        }
+
+        public static MauiAppBuilder RegisterExtend(this MauiAppBuilder mauiAppBuilder)
+        {
+            return mauiAppBuilder;
         }
 
         public static MauiAppBuilder RegisterView(this MauiAppBuilder mauiAppBuilder)

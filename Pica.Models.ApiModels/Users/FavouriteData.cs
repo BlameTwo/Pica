@@ -58,12 +58,17 @@ namespace Pica.Models.ApiModels.Users
         [JsonPropertyName("thumb")]public Favourite_Thumb Thumb { get; set; }
     }
 
-    public class Favourite_Thumb
+    public class Favourite_Thumb: IComicImageSource
     {
         [JsonPropertyName("originalName")]public string OriginalName { get; set; }
 
         [JsonPropertyName("path")]public string Path { get; set; }
 
         [JsonPropertyName("fileServer")]public string FileServer { get; set; }
+
+        //这里的Url是继承，原意是让接口提供统一的下载转换方法。
+
+        [JsonInclude]
+        public string Url => FileServer.Contains("static") ? FileServer + Path : $"{FileServer}/static/{Path}";
     }
 }

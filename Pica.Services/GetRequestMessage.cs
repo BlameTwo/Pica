@@ -104,7 +104,8 @@ namespace Pica.Services
 
         public async Task<Stream> ImageGetAsync(HttpRequestMessage request)
         {
-            var response = await Pica3Client._httpclient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+            HttpClient httpclient = new();
+            var response = await httpclient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStreamAsync();
         }
