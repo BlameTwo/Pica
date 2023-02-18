@@ -1,4 +1,5 @@
-﻿using Pica.Views;
+﻿using Android.Runtime;
+using Pica.Views;
 
 namespace Pica
 {
@@ -8,7 +9,10 @@ namespace Pica
         {
             InitializeComponent();
             MainPage = shell;
-            
+            AndroidEnvironment.UnhandledExceptionRaiser += (o, e) =>
+            {
+
+            };
         }
 
 
