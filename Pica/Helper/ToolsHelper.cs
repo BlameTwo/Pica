@@ -1,4 +1,4 @@
-﻿using Pica.Services.Interfaces;
+﻿using Pica.Models;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 
@@ -51,12 +51,12 @@ public static class ToolsHelper
     /// <param name="parent">父类本身</param>
     /// <param name="paramer">参数</param>
     /// <returns></returns>
-    public static Child ChildConvert<Parent, Child, Paramer>(this Parent parent, Paramer paramer)
-        where Child:Parent,IChildParamer<Paramer>, new()
+    public static Child ChildConvert<Parent, Child, Patamar>(this Parent parent, Patamar paramer)
+        where Child:Parent,IChildPatamar<Patamar>, new()
         where Parent:class,new()
     {
         var result = ChildConvert<Parent, Child>(parent);
-        result.ChildParamer = paramer;
+        result.ChildPatamar = paramer;
         return result;
     }
 }

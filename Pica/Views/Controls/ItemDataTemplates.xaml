@@ -68,10 +68,14 @@
     </DataTemplate>
 
     <DataTemplate x:Key="DefaultComicPageImage" x:DataType="datavm:WatchComicPagesItemDataViewModel">
-        <Image Aspect="AspectFit" Source="{Binding ImageSource, Mode=TwoWay}">
-            <Image.Behaviors>
+        <StackLayout Margin="10">
+            <StackLayout.Behaviors>
                 <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
-            </Image.Behaviors>
-        </Image>
+            </StackLayout.Behaviors>
+            <ActivityIndicator IsRunning="{Binding IsRuning}"/>
+            <Image VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" Source="{Binding ImageSource, Mode=TwoWay}">
+                
+            </Image>
+        </StackLayout>
     </DataTemplate>
 </ResourceDictionary>

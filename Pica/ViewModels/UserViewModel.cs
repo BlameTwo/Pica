@@ -1,8 +1,4 @@
 ﻿using CommunityToolkit.Maui.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using Pica.Helper;
 using Pica.Interfaces;
 using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Users;

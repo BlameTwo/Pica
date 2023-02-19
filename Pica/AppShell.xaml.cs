@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Views;
 using Pica.Interfaces;
+using Pica.Services.Interfaces;
 using Pica.Views;
 using Pica.Views.Details;
 
@@ -7,7 +8,9 @@ namespace Pica;
 
 public partial class AppShell : Shell
 {
-	public AppShell()
+    public ILocalSetting LocalSetting { get; }
+
+    public AppShell(ILocalSetting localSetting)
 	{
 		InitializeComponent();
         Routing.RegisterRoute("login", typeof(LoginPage));
@@ -18,6 +21,14 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(ComicDetailPage), typeof(ComicDetailPage));
         Routing.RegisterRoute(nameof(ComicDocumentDetailPage), typeof(ComicDocumentDetailPage));
         this.Navigated += AppShell_Navigated;
+        LocalSetting = localSetting;
+        InitLoad();
+    }
+
+    private void InitLoad()
+    {
+        //初始化设置文件
+        LocalSetting.InitSetting();
     }
 
     private async void AppShell_Navigated(object sender, ShellNavigatedEventArgs e)

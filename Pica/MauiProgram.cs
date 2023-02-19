@@ -14,6 +14,7 @@ using Pica.Views.Details;
 using Pica.ViewModels.DetailsViewModels;
 using Pica.Models.ApiModels.Comics;
 using Pica.Models.ApiModels.Users;
+using Pica.Services.Interfaces;
 
 namespace Pica
 {
@@ -67,6 +68,8 @@ namespace Pica
 
         public static MauiAppBuilder RegisterExtend(this MauiAppBuilder mauiAppBuilder)
         {
+            //配置文件读取
+            mauiAppBuilder.Services.AddSingleton<ILocalSetting,LocalSetting>();
             return mauiAppBuilder;
         }
 

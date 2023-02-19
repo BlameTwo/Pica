@@ -1,20 +1,18 @@
-﻿using CommunityToolkit.Maui.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using Pica.Interfaces;
+﻿using Pica.Interfaces;
 using Pica.Interfaces.Provider;
 using Pica.Models.Event;
+using Pica.Services.Interfaces;
 
 namespace Pica.ViewModels;
 
 
 public partial class LoginViewModel:ObservableObject
 {
-	public LoginViewModel(IPica3Client pica3Client,ILoginProvider loginProvider)
+	public LoginViewModel(IPica3Client pica3Client,ILoginProvider loginProvider,ILocalSetting localSetting)
 	{
         Pica3Client = pica3Client;
         LoginProvider = loginProvider;
+        LocalSetting = localSetting;
         Pica3Client.InitClient();
     }
 
@@ -22,6 +20,9 @@ public partial class LoginViewModel:ObservableObject
     async void Loaded()
     {
         this.Iplist = (await Pica3Client.GetIpList()).Ips;
+
+        User = (string)await LocalSetting.ReadConfig("User");
+        Passwd = (string)await LocalSetting.ReadConfig("Passwd");
     }
 
     [RelayCommand]
@@ -35,8 +36,9 @@ public partial class LoginViewModel:ObservableObject
                 Message = "登录成功"
                 , IsLogin= true
             });
-
             //这里登录后退回上一级
+            await LocalSetting.SaveConfig<string>("User",User);
+            await LocalSetting.SaveConfig<string>("Passwd",Passwd);
             await Shell.Current.GoToAsync("..", true);
         }
     }
@@ -65,4 +67,5 @@ public partial class LoginViewModel:ObservableObject
 
     public IPica3Client Pica3Client { get; }
     public ILoginProvider LoginProvider { get; }
+    public ILocalSetting LocalSetting { get; }
 }
