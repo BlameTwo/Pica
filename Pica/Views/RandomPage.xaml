@@ -6,7 +6,8 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:Pica.ViewModels"
     Title="随机"
-    x:DataType="vm:RandomViewModel">
+    x:DataType="vm:RandomViewModel"
+    BackgroundColor="Transparent">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
@@ -14,30 +15,21 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <RefreshView
             Grid.Row="0"
             Command="{Binding ScrollRefershCommand}"
             IsRefreshing="{Binding Isrefersh, Mode=TwoWay}">
-            <ScrollView x:Name="scroll" IsClippedToBounds="True">
-                <CollectionView
-                    x:Name="views"
-                    ItemTemplate="{DynamicResource DefaultComicItemStyle}"
-                    ItemsSource="{x:Binding ComicList,
-                                            Mode=TwoWay}"
-                    SelectionMode="None" />
-                <!--
-                    RemainingItemsThreshold="5"
-                    RemainingItemsThresholdReachedCommand="{Binding AddDataCommand}"
-                -->
-            </ScrollView>
+            <CollectionView
+                x:Name="views"
+                HorizontalScrollBarVisibility="Always"
+                ItemTemplate="{DynamicResource DefaultComicItemStyle}"
+                ItemsSource="{x:Binding ComicList,
+                                        Mode=TwoWay}"
+                RemainingItemsThreshold="5"
+                SelectionMode="None"
+                VerticalScrollBarVisibility="Always" />
         </RefreshView>
-        <Button
-            Grid.Row="1"
-            Command="{Binding AddDataCommand}"
-            HorizontalOptions="Center"
-            Text="点我加载" />
         <ActivityIndicator
             Grid.Row="2"
             HeightRequest="15"

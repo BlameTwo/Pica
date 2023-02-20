@@ -14,12 +14,10 @@
         <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
     <Grid>
-        <ScrollView>
-            <CollectionView
-                Grid.Row="1"
-                ItemTemplate="{DynamicResource DefaultComicPageImage}"
-                ItemsSource="{Binding Pages, Mode=OneWay}"
-                SelectionMode="None" />
-        </ScrollView>
+        <CollectionView
+            Grid.Row="1"
+            ItemTemplate="{DynamicResource DefaultComicPageImage}"
+            ItemsSource="{Binding Pages, Mode=OneWay}"
+            SelectionMode="None" />
     </Grid>
 </ContentPage>

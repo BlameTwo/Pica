@@ -21,7 +21,7 @@ public partial class RandomViewModel:ObservableObject
     [RelayCommand]
     void Loaded() 
     {
-        //Isrefersh = true;
+        Isrefersh = true;
     }
 
     [RelayCommand]
@@ -41,7 +41,6 @@ public partial class RandomViewModel:ObservableObject
 
 
 
-    [RelayCommand]
     public async Task AddData()
     {
         Isadd = true;

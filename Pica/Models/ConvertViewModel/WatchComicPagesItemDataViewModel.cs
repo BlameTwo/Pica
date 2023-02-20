@@ -10,13 +10,9 @@ public partial class WatchComicPagesItemDataViewModel :
 {
     public IImageDownloadProvider ChildPatamar { get; set; }
 
-    public WatchComicPagesItemDataViewModel()
-    {
-        
-    }
-
+    StreamImageSource source = null;
     [RelayCommand]
-    async void Loaded()
+    void Loaded()
     {
         this.IsRuning = true;
         if (this.ChildPatamar == null)
@@ -25,8 +21,7 @@ public partial class WatchComicPagesItemDataViewModel :
             return;
         }
         string url = this.FileSource.FileServer.Contains("static") ? this.FileSource.FileServer + this.FileSource.Path : $"{this.FileSource.FileServer}/static/{this.FileSource.Path}";
-        StreamImageSource source = new();
-       
+        source = new();
         source.Stream = new Func<CancellationToken, Task<Stream>>(async (s) =>
         {
             try

@@ -29,6 +29,10 @@
                         <TapGestureRecognizer Command="{Binding GoImageOpenCommand}" NumberOfTapsRequired="2" />
                     </Image.GestureRecognizers>
                 </Image>
+                <ActivityIndicator
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding Picload, Mode=OneWay}"
+                    VerticalOptions="Center" />
                 <Grid Grid.Column="1" Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -72,10 +76,12 @@
             <StackLayout.Behaviors>
                 <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
             </StackLayout.Behaviors>
-            <ActivityIndicator IsRunning="{Binding IsRuning}"/>
-            <Image VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" Source="{Binding ImageSource, Mode=TwoWay}">
-                
-            </Image>
+            <ActivityIndicator IsRunning="{Binding IsRuning}" />
+            <Image
+                Aspect="AspectFit"
+                HorizontalOptions="Fill"
+                Source="{Binding ImageSource, Mode=TwoWay}"
+                VerticalOptions="Fill" />
         </StackLayout>
     </DataTemplate>
 </ResourceDictionary>
