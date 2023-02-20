@@ -1,5 +1,7 @@
-﻿using Pica.Services.Interfaces;
+﻿using Pica.Helper;
+using Pica.Services.Interfaces;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Pica.Services
 {
@@ -57,17 +59,40 @@ namespace Pica.Services
             {
                 object ob = null;
                 Config.TryGetValue(key, out ob);
-                if(ob is JsonElement json && json.ValueKind == JsonValueKind.String)
-                {
-                    return json.GetString();
-                }
-                return ob;
+                if (ob is JsonElement json)
+                    return Helper.JsonObjectHelper.ConvertObject(json);
+                else
+                    return null;
             }
             else
             {
                 return default(object);
             }
         }
+
+
+        public async Task<T> ReadObjectConfig<T>(string key)
+        {
+            await refresh();
+            if(Config.ContainsKey(key) )
+            {
+                object ob = null;
+                Config.TryGetValue(key, out ob);
+                if(ob is JsonElement json && json.ValueKind == JsonValueKind.Object)
+                {
+                   return json.Deserialize<T>();
+                }
+                else
+                {
+                    throw new Exception("值类型请使用ReadConfig方法");
+                }
+            }
+            else
+            {
+                return default(T);
+            }
+        }
+
 
         public async Task SaveConfig<T>(string key, T value)
         {
@@ -98,5 +123,6 @@ namespace Pica.Services
             }
             return false;
         }
+
     }
 }

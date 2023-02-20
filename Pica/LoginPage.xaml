@@ -6,7 +6,6 @@
     xmlns:vm="clr-namespace:Pica.ViewModels"
     Title="登录"
     x:DataType="vm:LoginViewModel"
-    Routing.Route="shell/login"
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="False">
     <Grid

@@ -11,7 +11,7 @@ public partial class LoginTipMessagePopup : Popup
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-		await Shell.Current.GoToAsync("shell/login", true);
+		await Shell.Current.GoToAsync(nameof(LoginPage), true);
 		this.Close();
     }
 }

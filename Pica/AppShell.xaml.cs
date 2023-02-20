@@ -13,11 +13,11 @@ public partial class AppShell : Shell
     public AppShell(ILocalSetting localSetting)
 	{
 		InitializeComponent();
-        Routing.RegisterRoute("login", typeof(LoginPage));
-        Routing.RegisterRoute("shell/search", typeof(SearchPage));
-        Routing.RegisterRoute("shell/user", typeof(UserPage));
-        Routing.RegisterRoute("shell/rank", typeof(HotRank));
-        Routing.RegisterRoute("shell/random", typeof(RandomPage));
+        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+        Routing.RegisterRoute(nameof(SearchPage), typeof(SearchPage));
+        Routing.RegisterRoute(nameof(UserPage), typeof(UserPage));
+        Routing.RegisterRoute(nameof(HotRank), typeof(HotRank));
+        Routing.RegisterRoute(nameof(RandomPage), typeof(RandomPage));
         Routing.RegisterRoute(nameof(ComicDetailPage), typeof(ComicDetailPage));
         Routing.RegisterRoute(nameof(ComicDocumentDetailPage), typeof(ComicDocumentDetailPage));
         this.Navigated += AppShell_Navigated;

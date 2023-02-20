@@ -3,8 +3,7 @@
     x:Class="Pica.Views.SearchPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="搜索"
-    Routing.Route="shell/search">
+    Title="搜索">
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"

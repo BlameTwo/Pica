@@ -1,4 +1,5 @@
-﻿using Pica.Interfaces;
+﻿using CommunityToolkit.Maui.Alerts;
+using Pica.Interfaces;
 using Pica.Interfaces.Provider;
 using Pica.Models.Event;
 using Pica.Services.Interfaces;
@@ -37,6 +38,7 @@ public partial class LoginViewModel:ObservableObject
                 , IsLogin= true
             });
             //这里登录后退回上一级
+            await Toast.Make("登录成功", CommunityToolkit.Maui.Core.ToastDuration.Short, 16).Show();
             await LocalSetting.SaveConfig<string>("User",User);
             await LocalSetting.SaveConfig<string>("Passwd",Passwd);
             await Shell.Current.GoToAsync("..", true);

@@ -21,7 +21,7 @@ public partial class RandomViewModel:ObservableObject
     [RelayCommand]
     void Loaded() 
     {
-        Isrefersh = true;
+        //Isrefersh = true;
     }
 
     [RelayCommand]
@@ -40,12 +40,8 @@ public partial class RandomViewModel:ObservableObject
     }
 
 
-    [RelayCommand]
-    async void SelectChanged()
-    {
-        await Shell.Current.GoToAsync($"{nameof(ComicDetailPage)}?Id={this.Selectitem.ID}");
-    }
 
+    [RelayCommand]
     public async Task AddData()
     {
         Isadd = true;
@@ -69,9 +65,6 @@ public partial class RandomViewModel:ObservableObject
 
     [ObservableProperty]
     bool isadd;
-
-    [ObservableProperty]
-    RandomItemDataViewModel _selectitem;
 
     public IComicProvider ComicProvider { get; }
     public IImageDownloadProvider ImageDownloadProvider { get; }
