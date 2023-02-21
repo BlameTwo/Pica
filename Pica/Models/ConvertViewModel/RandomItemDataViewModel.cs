@@ -2,6 +2,7 @@
 using Pica.Models.ApiModels.Users;
 using Pica.Views.Details;
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace Pica.Models.ConvertViewModel;
 
@@ -26,14 +27,7 @@ public partial class RandomItemDataViewModel :
             source = new StreamImageSource();
             source.Stream = new Func<CancellationToken, Task<Stream>>(async (s) =>
             {
-                try
-                {
-                    return await ChildPatamar.DownloadImage(url);
-                }
-                catch (Java.Lang.RuntimeException ex2)
-                {
-                    return null;
-                }
+                return await ChildPatamar.DownloadImage(url);
             });
 
             Debug.WriteLine("加载新图像");

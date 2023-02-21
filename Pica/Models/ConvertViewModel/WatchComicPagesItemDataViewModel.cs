@@ -24,14 +24,7 @@ public partial class WatchComicPagesItemDataViewModel :
         source = new();
         source.Stream = new Func<CancellationToken, Task<Stream>>(async (s) =>
         {
-            try
-            {
-                return await ChildPatamar.DownloadImage(url);
-            }
-            catch (Java.Lang.RuntimeException ex2)
-            {
-                return null;
-            }
+            return await ChildPatamar.DownloadImage(url);
         });
         this.ImageSource = source;
         this.IsRuning = false;

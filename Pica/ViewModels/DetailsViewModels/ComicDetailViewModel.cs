@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Pica.Helper;
 using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Comics;
 using Pica.Models.ConvertViewModel;
@@ -15,6 +16,7 @@ public partial class ComicDetailViewModel : ObservableObject, IQueryAttributable
     {
         ComicProvider = comicProvider;
         Imagedown = imagedown;
+        Epsdocs = new();
     }
 
     /// <summary>
@@ -37,22 +39,18 @@ public partial class ComicDetailViewModel : ObservableObject, IQueryAttributable
         Stream  stream = await Imagedown.DownloadImage($"{Comicdata.Thumb.FileServer}/static/{Comicdata.Thumb.Path}");
         Imagepic = ImageSource.FromStream(()=>stream);
         var pageslist = await ComicProvider.GetComicEpisode(Id);
-        this.EpsList = pageslist.Data.ComicEp_Eps;
+        foreach (var item in pageslist.Data.ComicEp_Eps.Eps_Docs)
+        {
+            var val = item.ChildConvert<Eps_Docs, Eps_ItemViewModel, Eps_Nav_Mod>(new Eps_Nav_Mod()
+            {
+                 ComicTitle = Comicdata.Title,
+                  ID = this.Id
+            });
+            Epsdocs.Add(val);
+        }
     }
 
-    [RelayCommand]
-    async void SelectPage()
-    {
-        Dictionary<string, Object> value = new();
-        value.Add("Order", this.Selectpage.Order.ToString());
-        value.Add("ID", this.Id);
-        value.Add("ComicTitle", this.Comicdata.Title);
-        await Shell.Current.GoToAsync(nameof(ComicDocumentDetailPage),true,value);
-        
-    }
 
-    [ObservableProperty]
-    string _title;
     public IComicProvider ComicProvider { get; }
     public IImageDownloadProvider Imagedown { get; }
 
@@ -66,7 +64,7 @@ public partial class ComicDetailViewModel : ObservableObject, IQueryAttributable
     ImageSource imagepic;
 
     [ObservableProperty]
-    ComicEp_Eps _epsList;
+    List<Eps_ItemViewModel> _epsdocs;
 
 
 }

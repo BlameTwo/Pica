@@ -24,6 +24,14 @@
                     HeightRequest="160"
                     Source="{Binding Imagepic, Mode=OneWay}"
                     WidthRequest="120">
+                    <Image.Behaviors>
+                        <toolkit:AnimationBehavior EventName="Loaded">
+                            <toolkit:AnimationBehavior.AnimationType>
+                                <toolkit:FadeAnimation Opacity="0" />
+                            </toolkit:AnimationBehavior.AnimationType>
+                        </toolkit:AnimationBehavior>
+                    </Image.Behaviors>
+
                     <Image.GestureRecognizers>
                         <!--  打开图片详情的命令，需要双击图片  -->
                         <TapGestureRecognizer Command="{Binding GoImageOpenCommand}" NumberOfTapsRequired="2" />
@@ -74,14 +82,37 @@
     <DataTemplate x:Key="DefaultComicPageImage" x:DataType="datavm:WatchComicPagesItemDataViewModel">
         <StackLayout Margin="10">
             <StackLayout.Behaviors>
+                <toolkit:AnimationBehavior>
+                    <toolkit:AnimationBehavior.AnimationType>
+                        <toolkit:FadeAnimation Opacity="0.5" />
+                    </toolkit:AnimationBehavior.AnimationType>
+                </toolkit:AnimationBehavior>
                 <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
             </StackLayout.Behaviors>
-            <ActivityIndicator IsRunning="{Binding IsRuning}" />
+            <ActivityIndicator
+                HeightRequest="30"
+                IsRunning="{Binding IsRuning, Mode=TwoWay}"
+                WidthRequest="30" />
             <Image
                 Aspect="AspectFit"
                 HorizontalOptions="Fill"
                 Source="{Binding ImageSource, Mode=TwoWay}"
-                VerticalOptions="Fill" />
+                VerticalOptions="Fill">
+                <Image.Behaviors>
+                    <toolkit:AnimationBehavior EventName="Loaded">
+                        <toolkit:AnimationBehavior.AnimationType>
+                            <toolkit:FadeAnimation Opacity="0" />
+                        </toolkit:AnimationBehavior.AnimationType>
+                    </toolkit:AnimationBehavior>
+                </Image.Behaviors>
+            </Image>
         </StackLayout>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DefaultComic_EpsItem" x:DataType="datavm:Eps_ItemViewModel">
+        <Button
+            Padding="5"
+            Command="{Binding GoReadCommand}"
+            Text="{Binding Title}" />
     </DataTemplate>
 </ResourceDictionary>
