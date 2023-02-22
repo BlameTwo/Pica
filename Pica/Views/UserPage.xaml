@@ -7,6 +7,12 @@
     xmlns:vm="clr-namespace:Pica.ViewModels"
     Title="个人"
     x:DataType="vm:UserViewModel">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding GoSettingCommand}"
+            IconImageSource="settings.svg"
+            Text="设置" />
+    </ContentPage.ToolbarItems>
     <RefreshView Command="{Binding RefershProfileCommand}" IsRefreshing="{Binding Isrefersh, Mode=TwoWay}">
         <ScrollView>
             <StackLayout>

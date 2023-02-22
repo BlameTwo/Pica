@@ -64,7 +64,7 @@ public partial class ComicDetailViewModel : ObservableObject, IQueryAttributable
     ImageSource imagepic;
 
     [ObservableProperty]
-    List<Eps_ItemViewModel> _epsdocs;
+    ObservableCollection<Eps_ItemViewModel> _epsdocs;
 
 
 }

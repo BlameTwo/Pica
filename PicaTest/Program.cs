@@ -17,6 +17,7 @@ namespace PicaTest
             ILoginProvider loginProvider = AppCreate.GetService<ILoginProvider>();
             IUserProvider userProvider = AppCreate.GetService<IUserProvider>();
             IComicProvider comicProvider = AppCreate.GetService<IComicProvider>();
+            ISearchProvider searchProvider = AppCreate.GetService<ISearchProvider>();
 
             //获得分流IP
             var str = await pica3Client.GetIpList();
@@ -76,11 +77,11 @@ namespace PicaTest
 #endif
 
             #region 获取个人信息
-            var userdata = await userProvider.GetUserProfile();
+            //var userdata = await userProvider.GetUserProfile();
             #endregion
             #region 哔咔签到
-            var punch = await userProvider.UserPauch().ConfigureAwait(false);
-            Console.WriteLine(punch.Data.Resource.Status);
+            //var punch = await userProvider.UserPauch().ConfigureAwait(false);
+            //Console.WriteLine(punch.Data.Resource.Status);
             #endregion
 
             #region 漫画操作
@@ -112,6 +113,20 @@ namespace PicaTest
             #endregion
             #endregion
 
+            #region 搜索操作
+            #region 关联搜索
+            //var keylists = await searchProvider.SearchKeys();
+            //foreach (var item in keylists.Data.KeyWords)
+            //{
+            //    await Console.Out.WriteLineAsync(item);
+            //}
+            #endregion
+
+            #region 关键字搜索
+            //var keysearch = await searchProvider.Search("NTR", 1, Pica.Models.ApiModels.SortType.ua,null);
+            #endregion
+
+            #endregion
 
             Console.ReadLine();
         }

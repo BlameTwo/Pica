@@ -9,4 +9,9 @@ public partial class SearchPage : ContentPage
 		this.BindingContext = search;
 		InitializeComponent();
     }
+
+    private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
+    {
+
+    }
 }

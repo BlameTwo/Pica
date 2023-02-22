@@ -5,15 +5,11 @@ using Pica.Services;
 using PicaApi.Services.ApiProvider;
 using PicaApi.Services.Client;
 using CommunityToolkit.Maui;
-using System.Runtime.CompilerServices;
 using Pica.ViewModels;
 using CommunityToolkit.Maui.Markup;
 using Pica.Views;
-using Microsoft.Maui.LifecycleEvents;
 using Pica.Views.Details;
 using Pica.ViewModels.DetailsViewModels;
-using Pica.Models.ApiModels.Comics;
-using Pica.Models.ApiModels.Users;
 using Pica.Services.Interfaces;
 
 namespace Pica
@@ -84,6 +80,7 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<LoginTipMessagePopup>();
             mauiAppBuilder.Services.AddTransient<ComicDetailPage>();
             mauiAppBuilder.Services.AddTransient<ComicDocumentDetailPage>();
+            mauiAppBuilder.Services.AddTransient<SettingPage>();
             return mauiAppBuilder;
         }
 
@@ -97,6 +94,7 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
             mauiAppBuilder.Services.AddTransient<ComicDetailViewModel>();
             mauiAppBuilder.Services.AddTransient<ComicDocumentDetailViewModel>();
+            mauiAppBuilder.Services.AddTransient<SettingViewModel>();
             return mauiAppBuilder;
         }
     }

@@ -39,6 +39,7 @@ namespace PicaTest
                     services.AddTransient<ILoginProvider, LoginProvider>();
                     services.AddTransient<IUserProvider, UserProvider>();
                     services.AddTransient<IComicProvider, ComicProvider>();
+                    services.AddTransient<ISearchProvider, SearchProvider>();
                     #endregion
 
                     #region 注册请求方法
@@ -58,7 +59,6 @@ namespace PicaTest
             {
                 throw new ArgumentException($"{typeof(T)} 你他妈没注册吧，找不到，去找上一个方法去。");
             }
-
             return service;
         }
     }

@@ -3,6 +3,7 @@ using Pica.Interfaces;
 using Pica.Interfaces.Provider;
 using Pica.Models.ApiModels.Users;
 using Pica.Models.Event;
+using Pica.Views;
 using Pica.Views.Popups;
 
 namespace Pica.ViewModels;
@@ -25,6 +26,12 @@ public partial class UserViewModel:ObservableRecipient, IRecipient<LoginEventMod
     void Loaded()
     {
         if(Pica3Client.IsLogin())Refershuser();
+    }
+
+    [RelayCommand]
+    void GoSetting()
+    {
+        Shell.Current.GoToAsync(nameof(SettingPage), true);
     }
 
     [RelayCommand]

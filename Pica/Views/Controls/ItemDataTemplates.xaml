@@ -111,7 +111,7 @@
 
     <DataTemplate x:Key="DefaultComic_EpsItem" x:DataType="datavm:Eps_ItemViewModel">
         <Button
-            Padding="5"
+            Padding="15"
             Command="{Binding GoReadCommand}"
             Text="{Binding Title}" />
     </DataTemplate>
