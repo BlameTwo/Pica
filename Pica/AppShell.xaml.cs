@@ -21,6 +21,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(ComicDetailPage), typeof(ComicDetailPage));
         Routing.RegisterRoute(nameof(ComicDocumentDetailPage), typeof(ComicDocumentDetailPage));
         Routing.RegisterRoute(nameof(SettingPage), typeof(SettingPage));
+        Routing.RegisterRoute(nameof(SearchDetailPage), typeof(SearchDetailPage));
         this.Navigated += AppShell_Navigated;
         LocalSetting = localSetting;
         InitLoad();

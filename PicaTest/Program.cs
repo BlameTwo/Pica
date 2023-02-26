@@ -123,7 +123,7 @@ namespace PicaTest
             #endregion
 
             #region 关键字搜索
-            //var keysearch = await searchProvider.Search("NTR", 1, Pica.Models.ApiModels.SortType.ua,null);
+            var keysearch = await searchProvider.Search("NTR", 1, Pica.Models.ApiModels.SortType.ua,null);
             #endregion
 
             #endregion

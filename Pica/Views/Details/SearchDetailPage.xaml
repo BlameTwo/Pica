@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Pica.Views.Details.SearchDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Pica.ViewModels.DetailsViewModels"
+    Title="{Binding Title}"
+    x:DataType="vm:SearchDetailViewModel"
+    Shell.TabBarIsVisible="False">
+    <CollectionView ItemsSource="{Binding Data.Comics, Mode=OneWay}" />
+</ContentPage>

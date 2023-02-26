@@ -49,6 +49,7 @@ namespace Pica
             builder.Services.AddTransient<ILoginProvider, LoginProvider>();
             builder.Services.AddTransient<IUserProvider, UserProvider>();
             builder.Services.AddTransient<IComicProvider, ComicProvider>();
+            builder.Services.AddTransient<ISearchProvider, SearchProvider>();
             #endregion
 
             #region 注册请求方法
@@ -76,11 +77,13 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<LoginPage>();
             mauiAppBuilder.Services.AddTransient<UserPage>();
             mauiAppBuilder.Services.AddTransient<HotRank>();
+            mauiAppBuilder.Services.AddTransient<SearchPage>();
             mauiAppBuilder.Services.AddTransient<RandomPage>();
             mauiAppBuilder.Services.AddTransient<LoginTipMessagePopup>();
             mauiAppBuilder.Services.AddTransient<ComicDetailPage>();
             mauiAppBuilder.Services.AddTransient<ComicDocumentDetailPage>();
             mauiAppBuilder.Services.AddTransient<SettingPage>();
+            mauiAppBuilder.Services.AddTransient<SearchDetailPage>();
             return mauiAppBuilder;
         }
 
@@ -93,8 +96,10 @@ namespace Pica
             mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
             mauiAppBuilder.Services.AddTransient<HotRankViewModel>();
             mauiAppBuilder.Services.AddTransient<ComicDetailViewModel>();
+            mauiAppBuilder.Services.AddTransient<SearchViewModel>();
             mauiAppBuilder.Services.AddTransient<ComicDocumentDetailViewModel>();
             mauiAppBuilder.Services.AddTransient<SettingViewModel>();
+            mauiAppBuilder.Services.AddTransient<SearchDetailViewModel>();
             return mauiAppBuilder;
         }
     }

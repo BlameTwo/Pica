@@ -3,12 +3,30 @@
     x:Class="Pica.Views.SearchPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="搜索">
-    <Grid RowDefinitions="auto,*">
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:Pica.ViewModels"
+    Title="搜索"
+    x:DataType="vm:SearchViewModel">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
+    </ContentPage.Behaviors>
+    <Grid RowDefinitions="auto,*,auto" VerticalOptions="Center">
         <SearchBar
-            HorizontalOptions="StartAndExpand"
+            HorizontalOptions="Center"
             Placeholder="搜索你的关键字"
-            SearchButtonPressed="SearchBar_SearchButtonPressed"
+            SearchCommand="{Binding SearchKeyCommand}"
+            Text="{Binding Searchkey, Mode=TwoWay}"
             VerticalOptions="Center" />
+        <ListView
+            Grid.Row="1"
+            Margin="0,5,0,0"
+            ItemTapped="ListView_ItemTapped"
+            ItemsSource="{Binding Keys, Mode=OneWay}"
+            SelectionMode="None" />
+        <Button
+            Grid.Row="2"
+            Command="{Binding RefreshKeysCommand}"
+            HorizontalOptions="Center"
+            Text="刷新搜索推荐" />
     </Grid>
 </ContentPage>

@@ -47,7 +47,7 @@ public partial class ComicDocumentDetailViewModel : ObservableObject, IQueryAttr
         query.TryGetValue("ComicTitle", out title);
         string titstr = title.ToString();
         if (!string.IsNullOrWhiteSpace(titstr))
-            this.   Title = titstr;
+            this.Title = titstr;
     }
 
 

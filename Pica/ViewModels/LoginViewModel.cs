@@ -48,7 +48,7 @@ public partial class LoginViewModel:ObservableObject
 
 
     [RelayCommand]
-    async void SelectIp()
+    void SelectIp()
     {
         Pica3Client.SetIp(null, this.IpSelect);
     }
