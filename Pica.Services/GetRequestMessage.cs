@@ -72,7 +72,7 @@ namespace Pica.Services
             request.Headers.Add("app-platform", ApisProvider.AppPlatform);
             request.Headers.Add("app-uuid", ApisProvider.AppUuid);
             request.Headers.Add("User-Agent", ApisProvider.DefaultUA);
-            request.Headers.Add("Host", "picaapi.picacomic.com");
+            request.Headers.Add("Host", "api.manhuapica.com");
             return request;
         }
 

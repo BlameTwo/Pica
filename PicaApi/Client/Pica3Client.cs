@@ -16,7 +16,7 @@ namespace PicaApi.Services.Client
 
         private const string InitUrl = "http://68.183.234.72/init";
 
-        private const string BaseUrl = "https://picaapi.picacomic.com/";
+        private const string BaseUrl = "https://api.manhuapica.com";
 
         private Uri? BaseAddress;
 
@@ -85,7 +85,7 @@ namespace PicaApi.Services.Client
 
         public void SetIp(IWebProxy proxy,string proxystring)
         {
-            ChangeProxyAndBaseAddress(proxy,new Uri($"http://{proxystring}"));
+            ChangeProxyAndBaseAddress(proxy,new Uri($"https://api.manhuapica.com"));
         }
 
 

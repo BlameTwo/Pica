@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pica.Interfaces\Pica.Interfaces.csproj" />
+    <ProjectReference Include="..\Pica.Models.ApiModels\Pica.Models.ApiModels.csproj" />
+    <ProjectReference Include="..\Pica.Models.PicaJsonConverts\Pica.Models.PicaJsonConverts.csproj" />
+    <ProjectReference Include="..\Pica.Services\Pica.Services.csproj" />
     <ProjectReference Include="..\PicaApi\PicaApi.csproj" />
   </ItemGroup>
 

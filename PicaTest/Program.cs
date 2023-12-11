@@ -19,11 +19,11 @@ namespace PicaTest
             IComicProvider comicProvider = AppCreate.GetService<IComicProvider>();
             ISearchProvider searchProvider = AppCreate.GetService<ISearchProvider>();
 
-            //获得分流IP
-            var str = await pica3Client.GetIpList();
-            //设置分流IP
-            pica3Client.SetIp(null, str.Ips[0]);
-            Console.WriteLine("自动设置分流地址："+str.Ips[0]);
+            ////获得分流IP
+            //var str = await pica3Client.GetIpList();
+            ////设置分流IP
+            //pica3Client.SetIp(null, str.Ips[0]);
+            //Console.WriteLine("自动设置分流地址："+str.Ips[0]);
 
 #if DEBUG
             //Debug模式下使用自己账号
@@ -80,8 +80,8 @@ namespace PicaTest
             //var userdata = await userProvider.GetUserProfile();
             #endregion
             #region 哔咔签到
-            //var punch = await userProvider.UserPauch().ConfigureAwait(false);
-            //Console.WriteLine(punch.Data.Resource.Status);
+            var punch = await userProvider.UserPauch().ConfigureAwait(false);
+            Console.WriteLine("签到状态"+punch.Data.Resource.Status);
             #endregion
 
             #region 漫画操作
