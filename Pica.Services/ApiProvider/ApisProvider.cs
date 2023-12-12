@@ -10,7 +10,7 @@ namespace PicaApi.Services.ApiProvider
         public int AppChannel { get; set; } = 1;
         public ImageQuality ImageQuality { get; set; } = ImageQuality.Original;
         string IApisProvider.TimeStamp { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
-        string IApisProvider.DefaultUA { get; set; } = "okhttp/3.8.1";
+        string IApisProvider.DefaultUA { get; set; } = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0";
         string IApisProvider.DefaultAccept { get; set; } = "application/vnd.picacomic.com.v1+json";
         string IApisProvider.ApiKey { get; set; } = "C69BAF41DA5ABD1FFEDC6D2FEA56B";
         string IApisProvider.AppVersion { get; set; } = "2.2.1.2.3.4";
@@ -18,6 +18,6 @@ namespace PicaApi.Services.ApiProvider
         string IApisProvider.Nonce { get; set; } = Guid.NewGuid().ToString("N");
         string IApisProvider.AppPlatform { get; set; } = "android";
 
-        string IApisProvider.AppUuid { get; set; } = "defaultUuid";
+        string IApisProvider.AppUuid { get; set; } = "webUUID";
     }
 }

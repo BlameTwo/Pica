@@ -2,6 +2,7 @@
 using Pica.Interfaces.Provider;
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ public class ImageDownloadProvider : IImageDownloadProvider
     }
 
     public IGetRequestMessage GetRequestMessage { get; }
+    public IPica3Client Pica3Client { get; }
 
     public async Task<Stream> DownloadImage(string url)
     {
@@ -25,9 +27,17 @@ public class ImageDownloadProvider : IImageDownloadProvider
             var reqonse = await GetRequestMessage.ImageGetAsync(request).ConfigureAwait(false);
             return reqonse;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return null;
         }
+    }
+
+
+    public async Task<Stream> DownloadImageManhuabika(string url)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, url);
+        var reqonse = await GetRequestMessage.ImageGetAsync(request).ConfigureAwait (false);
+        return reqonse;
     }
 }

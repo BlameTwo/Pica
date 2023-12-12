@@ -7,4 +7,7 @@ public interface IImageDownloadProvider
 {
     Task<Stream> DownloadImage(string url);
 
+
+
+    public  Task<Stream> DownloadImageManhuabika(string url);
 }

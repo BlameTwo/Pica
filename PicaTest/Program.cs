@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Hosting;
 using Pica.Interfaces;
 using Pica.Interfaces.Provider;
+using Pica.Services.ApiProvider;
 using PicaApi.Services.ApiProvider;
 using PicaApi.Services.Client;
+using System.Drawing;
 
 namespace PicaTest
 {
@@ -14,10 +16,12 @@ namespace PicaTest
             //初始化客户端，此初始化方式为变量
             IPica3Client pica3Client = AppCreate.GetService<IPica3Client>();
             pica3Client.InitClient();
+            pica3Client.imageQuality = Pica.Models.ApiModels.ImageQuality.Original;
             ILoginProvider loginProvider = AppCreate.GetService<ILoginProvider>();
             IUserProvider userProvider = AppCreate.GetService<IUserProvider>();
             IComicProvider comicProvider = AppCreate.GetService<IComicProvider>();
             ISearchProvider searchProvider = AppCreate.GetService<ISearchProvider>();
+            IImageDownloadProvider imageDownloadProvider = AppCreate.GetService<IImageDownloadProvider>();
 
             ////获得分流IP
             //var str = await pica3Client.GetIpList();
@@ -80,16 +84,17 @@ namespace PicaTest
             //var userdata = await userProvider.GetUserProfile();
             #endregion
             #region 哔咔签到
-            var punch = await userProvider.UserPauch().ConfigureAwait(false);
-            Console.WriteLine("签到状态"+punch.Data.Resource.Status);
+            //var punch = await userProvider.UserPauch().ConfigureAwait(false);
+            //Console.WriteLine("签到状态"+punch.Data.Resource.Status);
             #endregion
 
             #region 漫画操作
             #region 个人收藏漫画
             //var myfav = await userProvider.GetUserFavourite();
+            //Console.WriteLine("我的收藏");
             //foreach (var item in myfav.Data.Comics.Docs)
             //{
-            //    Console.WriteLine(item.Title);
+                //Console.WriteLine(item.Title);
             //}
             #endregion
 
@@ -100,12 +105,17 @@ namespace PicaTest
 
             #region 获取漫画详情
             //var comicdetail = await comicProvider.GetComicDetail("63adb53484e1f369d2bda06e");
+            var pages = await comicProvider.GetComicPages("63adb53484e1f369d2bda06e", "1", 1);
+            var url = pages.Data.Pages.Documents[0].FileSource.Path.Substring(pages.Data.Pages.Documents[0].FileSource.Path.IndexOf("/")+1);
+            var stream = await imageDownloadProvider.DownloadImageManhuabika("http://img.manhuabika.com/" + url);
+            Bitmap bitmap = new(stream);
+            bitmap.Save("D:\\test.jpg");
             //Console.WriteLine(comicdetail);
             #endregion
 
             #region 获取漫画章节信息
-            //var comicpages = await comicProvider.GetComicEpisode("63adb53484e1f369d2bda06e", 1);
-            //Console.WriteLine(comicpages);
+            var comicpages = await comicProvider.GetComicEpisode("63adb53484e1f369d2bda06e", 1);
+            Console.WriteLine(comicpages);
             #endregion
 
             #region 获得随机本子
@@ -123,7 +133,7 @@ namespace PicaTest
             #endregion
 
             #region 关键字搜索
-            var keysearch = await searchProvider.Search("NTR", 1, Pica.Models.ApiModels.SortType.ua,null);
+            //var keysearch = await searchProvider.Search("NTR", 1, Pica.Models.ApiModels.SortType.ua,null);
             #endregion
 
             #endregion

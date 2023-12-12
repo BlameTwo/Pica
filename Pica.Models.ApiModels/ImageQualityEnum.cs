@@ -5,7 +5,7 @@
         /// <summary>
         /// 原图
         /// </summary>
-        Original,
+        Original = 9,
 
         /// <summary>
         /// 高

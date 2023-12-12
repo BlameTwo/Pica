@@ -40,6 +40,7 @@ namespace PicaTest
                     services.AddTransient<IUserProvider, UserProvider>();
                     services.AddTransient<IComicProvider, ComicProvider>();
                     services.AddTransient<ISearchProvider, SearchProvider>();
+                    services.AddTransient<IImageDownloadProvider, ImageDownloadProvider>();
                     #endregion
 
                     #region 注册请求方法
