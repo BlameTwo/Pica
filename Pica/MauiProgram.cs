@@ -58,7 +58,7 @@ namespace Pica
             #endregion
 
             #region 注册Client
-            builder.Services.AddSingleton<IPica3Client, Pica3Client>();
+            builder.Services.AddSingleton<IPicaClient, PicaClient>();
             #endregion
             return builder;
         }

@@ -7,10 +7,10 @@ namespace Pica.ViewModels;
 public partial class SearchViewModel:ObservableObject
 {
     public SearchViewModel(ISearchProvider searchProvider
-        ,IPica3Client pica3Client)
+        ,IPicaClient pica3Client)
     {
         SearchProvider = searchProvider;
-        Pica3Client = pica3Client;
+        PicaClient = pica3Client;
     }
 
     [RelayCommand]
@@ -21,7 +21,7 @@ public partial class SearchViewModel:ObservableObject
 
     async void refreshkey()
     {
-        if (Pica3Client.IsLogin())
+        if (PicaClient.IsLogin())
             this.Keys = (await SearchProvider.SearchKeys()).Data.KeyWords;
     }
 
@@ -49,7 +49,7 @@ public partial class SearchViewModel:ObservableObject
     }
 
     public ISearchProvider SearchProvider { get; }
-    public IPica3Client Pica3Client { get; }
+    public IPicaClient PicaClient { get; }
 
     [ObservableProperty]
     List<string> _Keys;

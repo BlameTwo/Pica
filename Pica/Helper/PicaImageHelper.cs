@@ -11,7 +11,7 @@ public static class PicaImageHelper
     /// <param name="url">图片地址</param>
     /// <param name="splitpath">是否包含Server地址</param>
     /// <returns></returns>
-    public static string GetConvertImage(IPica3Client pica3Client,string url,bool splitpath=false)
+    public static string GetConvertImage(IPicaClient pica3Client,string url,bool splitpath=false)
     {
 
         string host = pica3Client.GetIp().Host;

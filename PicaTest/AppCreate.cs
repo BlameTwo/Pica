@@ -48,7 +48,7 @@ namespace PicaTest
                     #endregion
 
                     #region 注册Client
-                    services.AddSingleton<IPica3Client, Pica3Client>();
+                    services.AddSingleton<IPicaClient, PicaClient>();
                     #endregion
                 }).Build();
         }

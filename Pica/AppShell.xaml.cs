@@ -38,7 +38,7 @@ public partial class AppShell : Shell
         //判断登录数据
         if (this.CurrentPage.GetType() == typeof(LoginPage))
             return;
-        var client = this.Handler.MauiContext.Services.GetService<IPica3Client>();
+        var client = this.Handler.MauiContext.Services.GetService<IPicaClient>();
         if (!client.IsLogin())
             await this.ShowPopupAsync(App.GetService<LoginTipMessagePopup>());
     }

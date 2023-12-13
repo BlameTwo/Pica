@@ -9,18 +9,18 @@ namespace Pica.ViewModels;
 
 public partial class LoginViewModel:ObservableObject
 {
-	public LoginViewModel(IPica3Client pica3Client,ILoginProvider loginProvider,ILocalSetting localSetting)
+	public LoginViewModel(IPicaClient pica3Client,ILoginProvider loginProvider,ILocalSetting localSetting)
 	{
-        Pica3Client = pica3Client;
+        PicaClient = pica3Client;
         LoginProvider = loginProvider;
         LocalSetting = localSetting;
-        Pica3Client.InitClient();
+        PicaClient.InitClient();
     }
 
     [RelayCommand]
     async void Loaded()
     {
-        this.Iplist = (await Pica3Client.GetIpList()).Ips;
+        this.Iplist = (await PicaClient.GetIpList()).Ips;
 
         User = (string)await LocalSetting.ReadConfig("User");
         Passwd = (string)await LocalSetting.ReadConfig("Passwd");
@@ -50,7 +50,7 @@ public partial class LoginViewModel:ObservableObject
     [RelayCommand]
     void SelectIp()
     {
-        Pica3Client.SetIp(null, this.IpSelect);
+        PicaClient.SetIp(null, this.IpSelect);
     }
 
 
@@ -67,7 +67,7 @@ public partial class LoginViewModel:ObservableObject
     string _ipSelect;
 
 
-    public IPica3Client Pica3Client { get; }
+    public IPicaClient PicaClient { get; }
     public ILoginProvider LoginProvider { get; }
     public ILocalSetting LocalSetting { get; }
 }

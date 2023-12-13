@@ -8,7 +8,7 @@ using System.IO;
 
 namespace PicaApi.Services.Client
 {
-    public class Pica3Client:IPica3Client
+    public class PicaClient:IPicaClient
     {
 
 
@@ -34,7 +34,7 @@ namespace PicaApi.Services.Client
         /// </summary>
         public bool IsLogin => !string.IsNullOrWhiteSpace(Token);
 
-        public Pica3Client(IApisProvider apisProvider)
+        public PicaClient(IApisProvider apisProvider)
         {
             ApisProvider = apisProvider;
         }
@@ -108,7 +108,7 @@ namespace PicaApi.Services.Client
             }
         }
 
-        bool IPica3Client.IsLogin()
+        bool IPicaClient.IsLogin()
         {
             if (string.IsNullOrWhiteSpace(this.Token))
                 return false;

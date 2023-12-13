@@ -4,12 +4,12 @@ namespace Pica.Services;
 
 public class ProviderBase
 {
-    public IPica3Client Pica3Client { get; set; }
+    public IPicaClient PicaClient { get; set; }
 
     public IGetRequestMessage GetRequestMessage { get; set; }
-    public ProviderBase(IPica3Client pica3Client, IGetRequestMessage getRequestMessage)
+    public ProviderBase(IPicaClient pica3Client, IGetRequestMessage getRequestMessage)
     {
-        Pica3Client = pica3Client;
+        PicaClient = pica3Client;
         GetRequestMessage = getRequestMessage;
     }
 }

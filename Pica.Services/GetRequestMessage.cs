@@ -15,12 +15,12 @@ namespace Pica.Services
     public class GetRequestMessage : IGetRequestMessage
     {
         public IApisProvider ApisProvider { get; }
-        public IPica3Client Pica3Client { get; }
+        public IPicaClient PicaClient { get; }
 
-        public GetRequestMessage(IApisProvider apisProvider, IPica3Client pica3Client)
+        public GetRequestMessage(IApisProvider apisProvider, IPicaClient pica3Client)
         {
             ApisProvider = apisProvider;
-            Pica3Client = pica3Client;
+            PicaClient = pica3Client;
         }
 
         private string GetSignature(HttpRequestMessage request)
@@ -34,7 +34,7 @@ namespace Pica.Services
 
         public async Task<Stream> SendAsync(HttpRequestMessage request)
         {
-            var quesonse = await Pica3Client._httpclient.SendAsync(request).ConfigureAwait(false);
+            var quesonse = await PicaClient._httpclient.SendAsync(request).ConfigureAwait(false);
             quesonse.EnsureSuccessStatusCode();
             var result = await quesonse.Content.ReadAsStreamAsync();
             string str = await quesonse.Content.ReadAsStringAsync();
@@ -51,9 +51,9 @@ namespace Pica.Services
         {
             HttpRequestMessage request = new HttpRequestMessage(httpMethod, uri);
             //判断是否需要进行增加token方法
-            if (!string.IsNullOrWhiteSpace(Pica3Client.Token) && istoken)
+            if (!string.IsNullOrWhiteSpace(PicaClient.Token) && istoken)
             {
-                request.Headers.Add("authorization", Pica3Client.Token);
+                request.Headers.Add("authorization", PicaClient.Token);
             }
             request.Content = poststring;
             if (request.Content?.Headers.ContentType != null)
@@ -79,7 +79,7 @@ namespace Pica.Services
         public HttpRequestMessage GetImageMessage(HttpMethod httpMethod, string url)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
-            var overrideBaseAddress = Pica3Client.GetIp();
+            var overrideBaseAddress = PicaClient.GetIp();
             if (overrideBaseAddress != null)
             {
                 var uri = new Uri(url);

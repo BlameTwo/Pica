@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pica.Interfaces
 {
-    public interface IPica3Client
+    public interface IPicaClient
     {
         /// <summary>
         /// 获得分流IP

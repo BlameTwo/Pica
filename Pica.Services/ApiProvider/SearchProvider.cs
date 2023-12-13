@@ -13,7 +13,7 @@ namespace Pica.Services.ApiProvider;
 
 public class SearchProvider : ProviderBase,ISearchProvider
 {
-    public SearchProvider(IPica3Client pica3Client, IGetRequestMessage getRequestMessage) 
+    public SearchProvider(IPicaClient pica3Client, IGetRequestMessage getRequestMessage) 
         :base(pica3Client:pica3Client,getRequestMessage:getRequestMessage)
     {
 
@@ -26,7 +26,7 @@ public class SearchProvider : ProviderBase,ISearchProvider
         {
             var jsoncontent = JsonContent.Create(new { Key,sort=type.ToString(),categories});
             var request = GetRequestMessage.GetRequestMessageAsync(HttpMethod.Post, $"comics/advanced-search?page={page}",jsoncontent,true,null);
-            var result = await Pica3Client._httpclient.SendAsync(request);
+            var result = await PicaClient._httpclient.SendAsync(request);
             result.EnsureSuccessStatusCode();
             
             var stream =  await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
@@ -46,7 +46,7 @@ public class SearchProvider : ProviderBase,ISearchProvider
         return await Task.Run(async () =>
         {
             var request = GetRequestMessage.GetRequestMessageAsync(HttpMethod.Get, "keywords", null, true, null);
-            var result = await Pica3Client._httpclient.SendAsync(request);
+            var result = await PicaClient._httpclient.SendAsync(request);
             result.EnsureSuccessStatusCode();
             Stream str = await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return Pica.Models.PicaJsonConverts.ReadJson.Read<ResultCode<KeyWordsData>>(str);

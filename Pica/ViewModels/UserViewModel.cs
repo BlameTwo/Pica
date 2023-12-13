@@ -10,13 +10,13 @@ namespace Pica.ViewModels;
 
 public partial class UserViewModel:ObservableRecipient, IRecipient<LoginEventModel>
 {
-    public IPica3Client Pica3Client { get; }
+    public IPicaClient PicaClient { get; }
     public IUserProvider UserProvider { get; }
     public IImageDownloadProvider ImageDownloadProvider { get; }
 
-    public UserViewModel(IPica3Client pica3Client, IUserProvider userProvider,IImageDownloadProvider imageDownloadProvider)
+    public UserViewModel(IPicaClient pica3Client, IUserProvider userProvider,IImageDownloadProvider imageDownloadProvider)
 	{
-        Pica3Client = pica3Client;
+        PicaClient = pica3Client;
         UserProvider = userProvider;
         ImageDownloadProvider = imageDownloadProvider;
         IsActive = true;
@@ -25,7 +25,7 @@ public partial class UserViewModel:ObservableRecipient, IRecipient<LoginEventMod
     [RelayCommand]
     void Loaded()
     {
-        if(Pica3Client.IsLogin())Refershuser();
+        if(PicaClient.IsLogin())Refershuser();
     }
 
     [RelayCommand]

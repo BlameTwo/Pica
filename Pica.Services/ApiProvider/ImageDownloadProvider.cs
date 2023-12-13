@@ -16,7 +16,7 @@ public class ImageDownloadProvider : IImageDownloadProvider
     }
 
     public IGetRequestMessage GetRequestMessage { get; }
-    public IPica3Client Pica3Client { get; }
+    public IPicaClient PicaClient { get; }
 
     public async Task<Stream> DownloadImage(string url)
     {

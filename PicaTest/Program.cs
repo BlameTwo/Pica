@@ -14,7 +14,7 @@ namespace PicaTest
         public async static Task Main(string[] args)
         {
             //初始化客户端，此初始化方式为变量
-            IPica3Client pica3Client = AppCreate.GetService<IPica3Client>();
+            IPicaClient pica3Client = AppCreate.GetService<IPicaClient>();
             pica3Client.InitClient();
             pica3Client.imageQuality = Pica.Models.ApiModels.ImageQuality.Original;
             ILoginProvider loginProvider = AppCreate.GetService<ILoginProvider>();
@@ -59,7 +59,7 @@ namespace PicaTest
                         if (userlogindata)
                         {
                             Console.WriteLine("登陆成功！");
-                            Console.WriteLine(AppCreate.GetService<IPica3Client>().Token);
+                            Console.WriteLine(AppCreate.GetService<IPicaClient>().Token);
                             break;
                         }
                         else
@@ -81,7 +81,7 @@ namespace PicaTest
 #endif
 
             #region 获取个人信息
-            //var userdata = await userProvider.GetUserProfile();
+            var userdata = await userProvider.GetUserProfile();
             #endregion
             #region 哔咔签到
             //var punch = await userProvider.UserPauch().ConfigureAwait(false);
@@ -106,10 +106,8 @@ namespace PicaTest
             #region 获取漫画详情
             //var comicdetail = await comicProvider.GetComicDetail("63adb53484e1f369d2bda06e");
             var pages = await comicProvider.GetComicPages("63adb53484e1f369d2bda06e", "1", 1);
-            var url = pages.Data.Pages.Documents[0].FileSource.Path.Substring(pages.Data.Pages.Documents[0].FileSource.Path.IndexOf("/")+1);
+            var url = pages.Data.Pages.Documents[0].FileSource.Path.Substring(pages.Data.Pages.Documents[1].FileSource.Path.IndexOf("/")+1);
             var stream = await imageDownloadProvider.DownloadImageManhuabika("http://img.manhuabika.com/" + url);
-            Bitmap bitmap = new(stream);
-            bitmap.Save("D:\\test.jpg");
             //Console.WriteLine(comicdetail);
             #endregion
 

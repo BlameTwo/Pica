@@ -15,12 +15,12 @@ namespace Pica.Services.ApiProvider
     public class LoginProvider : ILoginProvider
     {
         public string Token { get; set; }
-        public IPica3Client Pica3Client { get; }
+        public IPicaClient PicaClient { get; }
         public IGetRequestMessage GetRequestMessage { get; }
 
-        public LoginProvider(IPica3Client pica3Client, IGetRequestMessage getRequestMessage)
+        public LoginProvider(IPicaClient pica3Client, IGetRequestMessage getRequestMessage)
         {
-            Pica3Client = pica3Client;
+            PicaClient = pica3Client;
             GetRequestMessage = getRequestMessage;
         }
 
@@ -34,7 +34,7 @@ namespace Pica.Services.ApiProvider
             if(data.Data != null)
             {
                 //赋值token
-                Pica3Client.Token = data.Data.Token;
+                PicaClient.Token = data.Data.Token;
                 return true;
             }
             else
